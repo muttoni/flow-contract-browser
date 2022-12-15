@@ -1,7 +1,6 @@
 <script>
   import Select from 'svelte-select';
   import Item from '$lib/components/ContractPickerItem.svelte';
-  import { activeContract } from '$lib/stores';
   import { search } from '$lib/actions';
   import { goto } from "$app/navigation";
 
@@ -9,7 +8,6 @@
   let itemId = 'uuid';
 
   let handleSelect = (e) => {
-    $activeContract = e.detail
     goto("/" + e.detail.uuid)
   }
   
@@ -18,8 +16,8 @@
 </script>
 
 <div class="themed">
-  <Select {loadOptions} {itemId} value={$activeContract} hideEmptyState={true} {getOptionLabel} placeholder=" 🔍 Search for Contracts" on:input={handleSelect} isVirtualList={true}>
-  	<div class="item" slot="item" let:item let:index>
+  <Select {loadOptions} {itemId} hideEmptyState={true} placeholder=" 🔍 Search for Contracts" on:input={handleSelect}>
+  	<div class="item" slot="item" let:item>
       <Item {item} />
     </div>
 

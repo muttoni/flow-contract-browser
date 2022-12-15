@@ -43,7 +43,7 @@ small {
   --input-color: var(--color);
   --green: #0bcca1;
   --red: #c21549;
-  --height: 50px;
+  --height: 55px;
 }
 
 .themed input {
@@ -53,11 +53,11 @@ small {
   --background : var(--background-color) !important;
   --listBackground : var(--background-color) !important;
   --list-background : var(--background-color) !important;
-  --height: 55px;
   --padding:  var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
   --inputPadding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
   --internalPadding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
   --internal-padding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
+  --item-hover-color: var(--background-color)
 }
 
 

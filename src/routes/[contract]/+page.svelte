@@ -1,8 +1,12 @@
 <script>
   import CadenceCode from '$lib/components/CadenceCode.svelte';
   import CopyBadge from '$lib/components/CopyBadge.svelte';
+  import Select from 'svelte-select';
   export let data;
   let viewAllDependants = false;
+  let depFilter = '';
+
+  $: depFilteredResults = data.dependants?.filter(x => x.toLowerCase().includes(depFilter.toLowerCase()))
 </script>
 
 <article>
@@ -40,15 +44,18 @@
       </ul>
 
       <p class="badge-caption">{data.name} Is Used by  <span class="figure">{data.dependants?.length}</span> contracts </p>
+      {#if data.dependants?.length > 20}
+        <input type="text" bind:value={depFilter} placeholder="Filter...">
+      {/if}
       <ul class="dep-list">
         {#if data.dependants?.length > 0 && viewAllDependants === false}
-          {#each data.dependants as dep, i}
+          {#each depFilteredResults as dep, i}
             {#if i < 50}
             <li><a href="/{dep}">{dep}</a></li>
             {/if}
           {/each}
           {#if data.dependants.length >= 50}
-          <div class="mt-1 mb-1">... and {data.dependants.length - 50} more.</div> <button on:click={() => viewAllDependants = true}>Load all</button>
+            <li>... and {data.dependants.length - Math.min(50, depFilteredResults.length)} more.</li> <button on:click={() => viewAllDependants = true}>Load all</button>
           {/if}
         {/if}
 
@@ -87,7 +94,7 @@
     </div>
 
     <hr>
-    <h3>Contract Code <CopyBadge text={data.code}/></h3>
+    <h3 class="mt-1">Contract Code <CopyBadge text={data.code}/></h3>
 
     <CadenceCode code={data.code} />
     
@@ -129,6 +136,11 @@
 
     .figure {
       font-weight:bold;
+    }
+
+    .small {
+      font-size: 0.8rem;
+      padding:4px;
     }
   </style>
 
