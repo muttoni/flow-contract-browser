@@ -7,11 +7,11 @@ export let code = '';
 
 $: htmlx = '';
 
-const starryNight = createStarryNight([sourceCadence])
-  .then((starryNight) => {
-    const tree = starryNight.highlight(code, 'source.cadence')
-    htmlx = toHtml(tree)
-  })
+$: createStarryNight([sourceCadence])
+    .then((starryNight) => {
+      const tree = starryNight.highlight(code, 'source.cadence')
+      htmlx = toHtml(tree)
+    })
 
 </script>
 
