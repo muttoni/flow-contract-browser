@@ -1,0 +1,65 @@
+@import "@picocss/pico";
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 500;
+  letter-spacing: -2px;
+  line-height: 120%;
+  margin-top: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+button, a[role="button"] {
+  padding: 8px 15px;
+  font-size:0.8rem;
+  font-weight:bold;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+small {
+  margin:0;
+}
+
+.mt-1 {
+  margin-top:1rem;
+}
+
+.mb-1 {
+  margin-bottom:1rem;
+}
+
+*, .themed, .svelte-select-list, .list-item, .selectContainer {
+  --border : 1px solid var(--muted-border-color) !important;
+  --borderHoverColor : var(--muted-color);
+  --input-font-size: 1rem !important;
+  --input-color: var(--color);
+  --green: #0bcca1;
+  --red: #c21549;
+  --height: 50px;
+}
+
+.themed input {
+  outline: none !important;
+}
+.themed .svelte-select, .themed .list {
+  --background : var(--background-color) !important;
+  --listBackground : var(--background-color) !important;
+  --list-background : var(--background-color) !important;
+  --height: 55px;
+  --padding:  var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
+  --inputPadding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
+  --internalPadding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
+  --internal-padding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
+}
+
+
+.flex-center {
+  display:flex;
+  justify-content: start;
+  vertical-align: middle;
+  align-items: center;
+  margin-bottom:0;
+}
