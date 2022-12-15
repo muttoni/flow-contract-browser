@@ -1,4 +1,5 @@
 @import "@picocss/pico";
+@import "./code.css";
 
 h1 {
   font-size: 2.6rem;

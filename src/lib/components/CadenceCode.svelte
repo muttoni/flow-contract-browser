@@ -17,3 +17,9 @@ const starryNight = createStarryNight([sourceCadence])
 
 
 <pre><code>{@html htmlx}</code></pre>
+
+<style>
+  code, kbd, pre {
+    color:inherit;
+  }
+</style>
