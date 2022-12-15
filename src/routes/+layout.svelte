@@ -21,7 +21,7 @@
 
 <main class="container">
   
-  <h1><a href="/"><img src="/favicon.png" style="width: 50px; height: 50px;" alt="logo"/></a>flow <span class="light-text">Contract Browser</span></h1>
+  <h1><a href="/"><img src="/favicon.png" alt="logo"/></a>flow <span class="light-text">Contract Browser</span></h1>
   <ContractSearcher />
   <slot></slot>
 </main>
@@ -74,6 +74,8 @@
 
   img {
     margin-right: 1rem;
+    height:40px;
+    width: 40px;
   }
 
   .light-text {
@@ -81,6 +83,22 @@
     font-size: 1.8rem;
     text-transform: uppercase;
     letter-spacing: normal;
+  }
+
+  @media (max-width:730px){
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .light-text {
+      font-size: 1.2rem;
+    }
+
+    img {
+      height: 25px;
+      width: 25px;
+    }
   }
 
 

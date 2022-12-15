@@ -1,2 +1,13 @@
+import { error } from '@sveltejs/kit';
 
-export const ssr = false;
+/** @type {import('./$types').PageLoad} */
+export async function load({ fetch }) {
+
+  const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/latest`)
+  const json = await raw.json()
+
+  const latest = json.success && json.data ? json.data : {}
+
+  return { latest};
+
+}

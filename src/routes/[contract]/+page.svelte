@@ -17,7 +17,7 @@
     <h3>Deployed by <a href="https://flowview.app/account/{data.address}" target="_blank" rel="noreferrer">{data.address}</a></h3>
   </hgroup>
   <div class="grid">
-    <div class="">
+    <div class="mb-1">
       <h3>Basic Information</h3>
       <p>
         <span class="badge-caption">UUID</span><br/><kbd>{data.uuid}</kbd> <CopyBadge text={data.uuid} />
