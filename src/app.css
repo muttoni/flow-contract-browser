@@ -57,7 +57,8 @@ small {
   --inputPadding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
   --internalPadding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
   --internal-padding: var(--form-element-spacing-vertical) var(--form-element-spacing-horizontal);
-  --item-hover-color: var(--background-color)
+  --item-hover-color: var(--primary-inverse);
+  --item-hover-bg: var(--primary-hover);
 }
 
 
