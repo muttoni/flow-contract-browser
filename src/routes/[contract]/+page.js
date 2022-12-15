@@ -6,7 +6,7 @@ export async function load({ fetch, params }) {
   let uuid = params.contract;
 
   try {
-    const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/contract/${uuid}`)
+    const raw = await fetch(`/api/contract/${uuid}`)
     const json = await raw.json()
     const contract = json.success && json.data ? json.data : {}
     return contract;
