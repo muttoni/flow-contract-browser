@@ -5,11 +5,15 @@ export async function load({ fetch, params }) {
 
   let uuid = params.contract;
 
-  const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/contract/${uuid}`)
-  const json = await raw.json()
+  try {
+    const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/contract/${uuid}`)
+    const json = await raw.json()
+    const contract = json.success && json.data ? json.data : {}
+    return contract;
+  } catch(e) {
+    console.log(e);
+    //throw error(500, "something went wrong")
+  }
 
-  const contract = json.success && json.data ? json.data : {}
-
-  return contract;
 
 }
