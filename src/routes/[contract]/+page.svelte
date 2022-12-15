@@ -2,6 +2,7 @@
   import CadenceCode from '$lib/components/CadenceCode.svelte';
   import CopyBadge from '$lib/components/CopyBadge.svelte';
   export let data;
+  let viewAllDependants = false;
 </script>
 
 <article>
@@ -40,7 +41,18 @@
 
       <p class="badge-caption">{data.name} Is Used by  <span class="figure">{data.dependants?.length}</span> contracts </p>
       <ul class="dep-list">
-        {#if data.dependants?.length > 0}
+        {#if data.dependants?.length > 0 && viewAllDependants === false}
+          {#each data.dependants as dep, i}
+            {#if i < 50}
+            <li><a href="/{dep}">{dep}</a></li>
+            {/if}
+          {/each}
+          {#if data.dependants.length >= 50}
+          <div class="mt-1 mb-1">... and {data.dependants.length - 50} more.</div> <button on:click={() => viewAllDependants = true}>Load all</button>
+          {/if}
+        {/if}
+
+        {#if data.dependants?.length > 0 && viewAllDependants === true}
           {#each data.dependants as dep}
             <li><a href="/{dep}">{dep}</a></li>
           {/each}
