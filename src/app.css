@@ -39,11 +39,11 @@ small {
 *, .themed, .svelte-select-list, .list-item, .selectContainer {
   --border : 1px solid var(--muted-border-color) !important;
   --borderHoverColor : var(--muted-color);
-  --input-font-size: 1rem !important;
+  --input-font-size: 1.5rem !important;
   --input-color: var(--color);
   --green: #0bcca1;
   --red: #c21549;
-  --height: 55px;
+  --height: 60px;
 }
 
 .themed input {
