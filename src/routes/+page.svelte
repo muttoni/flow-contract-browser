@@ -4,7 +4,7 @@
 
 {#if data.latest?.length > 0}
 
-<h1>Latest deployed contracts</h1>
+<h2>Latest deployed contracts</h2>
 
 <ul>
   {#each data.latest as contract}
@@ -12,3 +12,10 @@
   {/each}
 </ul>
 {/if}
+
+<style>
+  h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+</style>

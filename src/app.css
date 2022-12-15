@@ -9,6 +9,10 @@ h1 {
   margin-bottom: 1.2rem;
 }
 
+h2, h3, h4, h5 {
+  margin-bottom: 0;
+}
+
 button, a[role="button"] {
   padding: 8px 15px;
   font-size:0.8rem;
