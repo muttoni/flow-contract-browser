@@ -143,10 +143,5 @@
     .figure {
       font-weight:bold;
     }
-
-    .small {
-      font-size: 0.8rem;
-      padding:4px;
-    }
   </style>
 
