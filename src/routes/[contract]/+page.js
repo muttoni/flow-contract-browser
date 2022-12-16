@@ -15,6 +15,6 @@ export async function load({ fetch, params }) {
     console.log(e);
     //throw error(500, "something went wrong")
   }
-
-
 }
+
+export const ssr = false;
