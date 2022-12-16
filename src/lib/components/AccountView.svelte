@@ -6,7 +6,7 @@ export let contracts = [];
 <article>
   <hgroup>
     <h2>
-      <h2><span class="muted">0x</span>{account}</h2>
+      <h2>{account}</h2>
       {#if contracts?.length > 5}
       <div class="claimed-badge success">
         Popular!

@@ -22,7 +22,12 @@
 
 <main class="container">
   
-  <h1><a href="/"><img src="/logo.png" alt="logo"/></a>flow <span class="light-text">Contract Browser</span></h1>
+ <a href="/">
+    <div class="logo">
+      <img src="/logo.png" alt="logo"/>
+      <h1>flow <span class="light-text">Contract Browser</span></h1>
+    </div>
+  </a>
   <ContractSearcher />
   <slot></slot>
 </main>
@@ -96,6 +101,16 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
     letter-spacing: normal;
   }
 
+  .logo {
+    display:flex;
+    align-items: center;
+    padding: 20px 0px;
+  }
+
+  h1 {
+    margin:0;
+
+  }
   @media (max-width:730px){
   
     h1 {
