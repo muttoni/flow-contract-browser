@@ -55,7 +55,7 @@ small {
 }
 
 .themed input {
-  outline: none !important;
+  outline: border-radius;
 }
 
 .themed .svelte-select, .themed .list {
