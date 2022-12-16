@@ -54,8 +54,8 @@ small {
   --height: 60px;
 }
 
-.themed input {
-  outline: border-radius;
+.value-container input:focus {
+  border-radius:0 !important;
 }
 
 .themed .svelte-select, .themed .list {
