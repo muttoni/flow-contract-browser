@@ -17,7 +17,7 @@ export let contracts = [];
   <a role="button" class="mb-1" target="_blank" rel="noreferrer" href="https://flowview.app/account/{account}">Inspect account on FlowView.app</a>
   <div class="mb-1 grid">
     <div>
-      <h3>Owned by {account}</h3>
+      <h4>Owned by {account}</h4>
       <ul class="dep-list">
         {#if contracts?.filter((s) => s.uuid.includes(account))?.length > 0}
           {#each contracts?.filter((s) => s.uuid.includes(account)) as c}
@@ -29,14 +29,14 @@ export let contracts = [];
       </ul>
     </div>
     <div>
-      <h3>Involving {account}</h3>
+      <h4>Involving {account}</h4>
       <ul class="dep-list">
         {#if contracts?.filter((s) => !s.uuid.includes(account))?.length > 0}
           {#each contracts?.filter((s) => !s.uuid.includes(account)) as c}
             <li><a href="/{c.uuid}">{c.uuid}</a></li>
           {/each}
         {:else}
-          No contracts involving {account}
+          No other contracts involving {account}
         {/if}
       </ul>
     </div>
@@ -72,6 +72,11 @@ export let contracts = [];
 
     h2 {
       margin-bottom: 0rem;
+    }
+
+    h4 {
+      margin-top: 40px;
+      margin-bottom: 20px;
     }
 
     .muted {
