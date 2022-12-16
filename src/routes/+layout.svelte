@@ -54,7 +54,7 @@
   </a>
 
 <footer>
-
+ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/muttoni/flow-contract-browser/issues/new" target="_blank" rel="noreferrer">Let me know!</a>
 </footer>
   
 
@@ -107,10 +107,9 @@
   }
 
   footer {
-    clear: both;
-    position: relative;
-    height: 200px;
-    margin-top: -200px;
-}
+    text-align:center;
+    font-size: 0.6rem;
+    padding-bottom: 30px;
+  }
 
 </style>

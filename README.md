@@ -1,18 +1,8 @@
-# create-svelte
+# Flow Contract Browser
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This community project aims to archive and make available (and searchable) all mainnet contracts on Flow.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+![]("https://contractbrowser.com/social.png")
 
 ## Developing
 

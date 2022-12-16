@@ -1,8 +1,11 @@
 @import "@picocss/pico";
 @import "./code.css";
 
-body {
-  min-height: 100%;
+html, body { height: 100%;}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
 }
 
 
