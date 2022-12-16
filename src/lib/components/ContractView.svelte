@@ -25,7 +25,7 @@
       </div>
       {/if}
     </h2>
-    <h3>Deployed by <a href="https://flowview.app/account/{address}" target="_blank" rel="noreferrer">{address}</a></h3>
+    <h3>Deployed by <a href="/account/{address}">{address}</a></h3>
   </hgroup>
   <div class="grid">
     <div class="mb-1">
