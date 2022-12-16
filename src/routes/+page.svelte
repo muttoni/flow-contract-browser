@@ -2,6 +2,12 @@
   export let data;
 </script>
 
+<svelte:head>
+  <title>Flow Contract Browser</title>
+  <meta property="og:title" content="Flow Contract Browser" />
+</svelte:head>
+
+
 {#if data.latest?.length > 0}
 
 <h2>Latest deployed contracts</h2>
