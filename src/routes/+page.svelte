@@ -32,16 +32,16 @@
   <div>
     <h2>🔥 Top contracts</h2>
     <ul>
-      <li><a href="/A.1d7e57aa55817448.NonFungibleToken">A.1d7e57aa55817448.NonFungibleToken</a>
-      <li><a href="/A.f233dcee88fe0abe.FungibleToken">A.f233dcee88fe0abe.FungibleToken</a>
-      <li><a href="/A.1d7e57aa55817448.MetadataViews">A.1d7e57aa55817448.MetadataViews</a>
-      <li><a href="/A.1654653399040a61.FlowToken">A.1654653399040a61.FlowToken</a>
-      <li><a href="/A.3c5959b568896393.FUSD">A.3c5959b568896393.FUSD</a>
-      <li><a href="/A.b78ef7afa52ff906.SwapConfig">A.b78ef7afa52ff906.SwapConfig</a>
-      <li><a href="/A.b78ef7afa52ff906.SwapInterfaces">A.b78ef7afa52ff906.SwapInterfaces</a>
-      <li><a href="/A.b063c16cac85dbd1.SwapFactory">A.b063c16cac85dbd1.SwapFactory</a>
-      <li><a href="/A.b78ef7afa52ff906.SwapError">A.b78ef7afa52ff906.SwapError</a>
-      <li><a href="/A.6a07dbeb03167a13.EmeraldPass">A.6a07dbeb03167a13.EmeraldPass</a>
+      <li><a href="/A.1d7e57aa55817448.NonFungibleToken">NonFungibleToken</a>
+      <li><a href="/A.f233dcee88fe0abe.FungibleToken">FungibleToken</a>
+      <li><a href="/A.1d7e57aa55817448.MetadataViews">MetadataViews</a>
+      <li><a href="/A.1654653399040a61.FlowToken">FlowToken</a>
+      <li><a href="/A.3c5959b568896393.FUSD">FUSD</a>
+      <li><a href="/A.b78ef7afa52ff906.SwapConfig">SwapConfig</a>
+      <li><a href="/A.b78ef7afa52ff906.SwapInterfaces">SwapInterfaces</a>
+      <li><a href="/A.b063c16cac85dbd1.SwapFactory">SwapFactory</a>
+      <li><a href="/A.b78ef7afa52ff906.SwapError">SwapError</a>
+      <li><a href="/A.6a07dbeb03167a13.EmeraldPass">EmeraldPass</a>
     </ul>  
   </div>
   <div>
