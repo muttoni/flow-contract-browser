@@ -11,8 +11,9 @@
   h1 {
     margin-bottom: 5px;
     font-size: 3rem;
+    margin-top:0px;
   }
   div {
-    text-align:center;
+
   }
 </style>
