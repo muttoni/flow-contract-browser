@@ -8,7 +8,9 @@
   let itemId = 'uuid';
 
   let handleSelect = (e) => {
-    goto("/" + e.detail.uuid)
+    if(e.detail && e.detail.uuid) {
+      goto("/" + e.detail?.uuid)
+    }
   }
   
   const getOptionLabel = (option) => option.uuid;
