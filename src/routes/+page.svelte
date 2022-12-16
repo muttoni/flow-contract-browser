@@ -45,7 +45,7 @@
     </ul>  
   </div>
   <div>
-    <h2>Accounts with most contracts</h2>
+    <h2>🐳 Top deploying accounts</h2>
     <ul>
       <li><a href="/account/0x635a9971e6bdc54a">0x635a9971e6bdc54a (83 deployed contracts)</a>
       <li><a href="/account/0x097bafa4e0b48eef">0x097bafa4e0b48eef (37 deployed contracts)</a>
@@ -63,7 +63,7 @@
 
 {#if data.latest?.length > 0}
 
-<h2>Recently deployed contracts</h2>
+<h2>🆕 Recently deployed contracts</h2>
 
 <ul>
   {#if data?.latest}
