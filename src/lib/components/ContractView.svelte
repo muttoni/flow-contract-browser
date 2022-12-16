@@ -37,7 +37,7 @@
       <p class="mt-1"><span class="badge-caption">Address</span><br/><kbd>{address}</kbd> <CopyBadge text={address} />
       </p>
       <a role="button" class="" target="_blank" rel="noreferrer" href="https://flowview.app/account/{address}">Inspect account on FlowView.app</a>
-      <a role="button" class="mt-1 mb-1" target="_blank" rel="noreferrer" href="/account/{address}">Other contracts involving {address} &rarr;</a>
+      <a role="button" class="mt-1 mb-1 outline" target="_blank" rel="noreferrer" href="/account/{address}">All contracts involving {address} &rarr;</a>
     </div>
     <div class="">
       <h3>Dependency Information</h3>
