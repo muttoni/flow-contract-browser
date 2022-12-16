@@ -19,8 +19,8 @@ export let contracts = [];
     <div>
       <h4>Owned by {account}</h4>
       <ul class="dep-list">
-        {#if contracts?.filter((s) => s.uuid.includes(account))?.length > 0}
-          {#each contracts?.filter((s) => s.uuid.includes(account)) as c}
+        {#if contracts?.filter((s) => s.uuid.includes(account.substring(2)))?.length > 0}
+          {#each contracts?.filter((s) => s.uuid.includes(account.substring(2))) as c}
             <li><a href="/{c.uuid}">{c.uuid}</a></li>
           {/each}
         {:else}
@@ -31,8 +31,8 @@ export let contracts = [];
     <div>
       <h4>Involving {account}</h4>
       <ul class="dep-list">
-        {#if contracts?.filter((s) => !s.uuid.includes(account))?.length > 0}
-          {#each contracts?.filter((s) => !s.uuid.includes(account)) as c}
+        {#if contracts?.filter((s) => !s.uuid.includes(account.substring(2)))?.length > 0}
+          {#each contracts?.filter((s) => !s.uuid.includes(account.substring(2))) as c}
             <li><a href="/{c.uuid}">{c.uuid}</a></li>
           {/each}
         {:else}
