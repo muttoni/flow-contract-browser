@@ -1,6 +1,11 @@
 @import "@picocss/pico";
 @import "./code.css";
 
+body {
+  min-height: 100%;
+}
+
+
 h1 {
   font-size: 2.6rem;
   font-weight: 500;
@@ -49,6 +54,7 @@ small {
 .themed input {
   outline: none !important;
 }
+
 .themed .svelte-select, .themed .list {
   --background : var(--background-color) !important;
   --listBackground : var(--background-color) !important;

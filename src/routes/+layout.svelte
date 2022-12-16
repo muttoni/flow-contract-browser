@@ -1,5 +1,6 @@
 <script>
 
+  import "../app.css";
   import { onMount } from 'svelte';
   import { theme } from '$lib/stores';
   import ContractSearcher from '../lib/components/ContractSearcher.svelte';
@@ -52,8 +53,12 @@
     {/if}
   </a>
 
-<style global>
-  @import "../app.css";
+<footer>
+
+</footer>
+  
+
+<style>
 
   .theme-toggle {
     padding: 0;
@@ -101,5 +106,11 @@
     }
   }
 
+  footer {
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: -200px;
+}
 
 </style>

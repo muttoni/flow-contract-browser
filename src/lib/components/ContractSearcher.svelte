@@ -16,7 +16,7 @@
 </script>
 
 <div class="themed">
-  <Select {loadOptions} {itemId} hideEmptyState={true} placeholder=" 🔍 Search for Contracts" on:input={handleSelect}>
+  <Select {loadOptions} {itemId} hideEmptyState={true} placeholder=" 🔍 Search for contracts or accounts" on:input={handleSelect}>
   	<div class="item" slot="item" let:item>
       <Item {item} />
     </div>
@@ -26,8 +26,3 @@
     </div>
   </Select>
 </div>
-
-
-<style>
-
-</style>
