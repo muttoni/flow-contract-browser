@@ -22,7 +22,7 @@
 
 <main class="container">
   
-  <h1><a href="/"><img src="/favicon.png" alt="logo"/></a>flow <span class="light-text">Contract Browser</span></h1>
+  <h1><a href="/"><img src="/logo.png" alt="logo"/></a>flow <span class="light-text">Contract Browser</span></h1>
   <ContractSearcher />
   <slot></slot>
 </main>
@@ -79,8 +79,14 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
 
   img {
     margin-right: 1rem;
-    height:40px;
-    width: 40px;
+    height:60px;
+    width: 60px;
+  }
+
+  a:focus{
+    outline:none;
+    background:transparent;
+    user-select: none;
   }
 
   .light-text {
@@ -101,8 +107,8 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
     }
 
     img {
-      height: 25px;
-      width: 25px;
+      height: 40px;
+      width: 40px;
     }
   }
 

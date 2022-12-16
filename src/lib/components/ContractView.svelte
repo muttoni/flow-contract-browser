@@ -51,7 +51,7 @@
       </ul>
 
       <p class="badge-caption">{name} Is Used by  <span class="figure">{dependants?.length}</span> contracts </p>
-      {#if dependants?.length > 20}
+      {#if dependants?.length > 20 || depFilter.length > 0}
         <input type="text" bind:value={depFilter} placeholder="Filter...">
       {/if}
       <ul class="dep-list">
