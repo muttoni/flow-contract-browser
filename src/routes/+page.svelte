@@ -1,5 +1,10 @@
 <script>
+  import StatCard from '$lib/components/StatCard.svelte';
+  import { timeSince } from '$lib/utils'
   export let data;
+
+
+  
 </script>
 
 <svelte:head>
@@ -7,10 +12,27 @@
   <meta property="og:title" content="Flow Contract Browser" />
 </svelte:head>
 
+<div class="grid">
+  <StatCard 
+    number={data.status.contract_amount.toLocaleString("en-US")}
+    label="Contracts" 
+  />
+  <StatCard 
+    number={data.status.synced_height.toLocaleString("en-US")}
+    label="Synced Block Height" 
+  />
+</div>
+
+<h2>Status</h2>
+<div class="status">
+  <div>Status: <span>{data.status.success ? "✅ ONLINE" : "💤 OFFLINE"}</span> </div>
+  <div>Network: <span>{data.status.network}</span></div>
+  <div>Last updated: <span>{timeSince(new Date(), new Date(data.status.last_sync_at))} ago</span></div>
+</div>
 
 {#if data.latest?.length > 0}
 
-<h2>Latest deployed contracts</h2>
+<h2>Recently deployed contracts</h2>
 
 <ul>
   {#each data.latest as contract}
@@ -24,4 +46,14 @@
     margin-top: 30px;
     margin-bottom: 10px;
   }
+
+  .status {
+    display:flex;
+    flex-direction: column;
+    font-weight:200;
+    align-items: left;
+    justify-content: center;;
+  }
+
+
 </style>

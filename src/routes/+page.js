@@ -3,11 +3,17 @@ import { error } from '@sveltejs/kit';
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch }) {
 
-  const raw = await fetch(`/api/latest`)
-  const json = await raw.json()
+  const rawStatus = await fetch(`/api/status`)
+  const jsonStatus = await rawStatus.json()
+  const status = jsonStatus.success && jsonStatus.data ? jsonStatus.data : {}
+  if(jsonStatus.success = true) {
+    status.success = true
+  }
 
-  const latest = json.success && json.data ? json.data : {}
+  const rawLatest = await fetch(`/api/latest`)
+  const jsonLatest = await rawLatest.json()
+  const latest = jsonLatest.success && jsonLatest.data ? jsonLatest.data : {}
 
-  return { latest};
+  return { status, latest};
 
 }
