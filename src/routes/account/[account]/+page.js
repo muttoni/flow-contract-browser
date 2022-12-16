@@ -20,6 +20,7 @@ export async function load({ fetch, params }) {
   } catch(e) {
     console.log("Something went wrong...")
     console.log(e);
+    return { contracts: [], account: params.account}
     //throw error(500, "something went wrong")
   }
 }

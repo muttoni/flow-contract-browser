@@ -31,7 +31,7 @@
     <div class="mb-1">
       <h3>Basic Information</h3>
       <p>
-        <span class="badge-caption">UUID</span><br/><kbd>{uuid}</kbd> <CopyBadge text={uuid} />
+        <span class="badge-caption">Location</span><br/><kbd>{uuid}</kbd> <CopyBadge text={uuid} />
       </p>
       <a role="button" target="_blank" rel="noreferrer" href="https://flow-view-source.com/mainnet/account/{address}/contract/{name}">View on FlowViewSource</a>
       <p class="mt-1"><span class="badge-caption">Address</span><br/><kbd>{address}</kbd> <CopyBadge text={address} />

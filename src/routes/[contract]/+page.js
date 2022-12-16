@@ -13,6 +13,7 @@ export async function load({ fetch, params }) {
   } catch(e) {
     console.log("Something went wrong...")
     console.log(e);
+    return {}
     //throw error(500, "something went wrong")
   }
 }

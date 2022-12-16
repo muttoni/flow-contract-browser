@@ -8,4 +8,10 @@
   <meta property="og:title" content="{data?.uuid} | Flow Contract Browser" />
 </svelte:head>
 
+{#if data && data.uuid}
 <ContractView {...data} />
+{:else}
+<article>
+  <p>Could not connect to the database</p>
+</article>
+{/if}

@@ -9,4 +9,10 @@
 
 </svelte:head>
 
+{#if data}
 <AccountView {...data} />
+{:else}
+<article>
+  <p>Could not connect to the database.</p>
+</article>
+{/if}
