@@ -25,18 +25,27 @@
     </h2>
     <h3>Deployed by <a href="/account/{address}">{address}</a></h3>
   </hgroup>
+
   <div class="grid">
-    <div class="mb-1">
-      <h3>Basic Information</h3>
-      <p>
-        <span class="badge-caption">Location</span><br/><kbd>{uuid}</kbd><CopyBadge text={uuid} />
-      </p>
-      <a role="button" target="_blank" rel="noreferrer" href="https://flow-view-source.com/mainnet/account/{address}/contract/{name}">View on FlowViewSource</a>
-      <p class="mt-1"><span class="badge-caption">Address</span><br/><kbd>{address}</kbd> <CopyBadge text={address} />
-      </p>
-      <a role="button" class="" target="_blank" rel="noreferrer" href="https://flowview.app/account/{address}">Inspect account on FlowView.app</a>
-      <a role="button" class="mt-1 mb-1 outline" target="_blank" rel="noreferrer" href="/account/{address}">All contracts involving {address} &rarr;</a>
+    <div>
+      <div class="mb-1">
+        <h3>Basic Information</h3>
+        <p class="badge-caption">Location <CopyBadge text={uuid} /></p>
+        <kbd>{uuid}</kbd>
+        <a role="button" class="mt-05" target="_blank" rel="noreferrer" href="https://flow-view-source.com/mainnet/account/{address}/contract/{name}">View on FlowViewSource</a>
+      </div>
+      <div class="mb-1">
+        <p class="badge-caption">Address <CopyBadge text={address} /></p>
+        <kbd>{address}</kbd>
+        <a role="button" class="mt-05" target="_blank" rel="noreferrer" href="https://flowview.app/account/{address}">Inspect account on FlowView.app</a>
+        <a role="button" class="mt-05 mb-1 outline" target="_blank" rel="noreferrer" href="/account/{address}">All contracts involving {address} &rarr;</a>
+      </div>
+      <div class="mb-1">
+        <p class="badge-caption">Import <CopyBadge text="import {name} from {address}" /></p>
+        <CadenceCode code="import {name} from {address}" />
+      </div>
     </div>
+
     <div class="">
       <h3>Dependency Information</h3>
 
@@ -85,16 +94,19 @@
       color: var(--green);
     }
 
-    .dep-list {
-      font-size:0.8rem;
-    }
-
     h3 {
       margin-bottom: 0.8rem;
     }
 
     .figure {
       font-weight:bold;
+    }
+
+    kbd {
+      max-width: 350px;
+      text-overflow: ellipsis;
+      overflow-y:hidden;
+      white-space: nowrap;
     }
   </style>
 

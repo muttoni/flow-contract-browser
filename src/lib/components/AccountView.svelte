@@ -78,8 +78,4 @@ export let contracts = [];
       margin-top: 40px;
       margin-bottom: 20px;
     }
-
-    .muted {
-      opacity:0.5;
-    }
   </style>

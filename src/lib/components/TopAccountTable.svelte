@@ -32,7 +32,7 @@
   {pageSize}
   {search}
   rows={accounts}
-  labels={{ empty: "No accoujts to show..." }}>
+  labels={{ empty: "No accounts to show..." }}>
   <thead slot="head">
     <tr>
       <th>Address</th>

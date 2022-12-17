@@ -37,6 +37,8 @@
     ...globalLabels
   };
 
+  setSearchLabels(labels);
+
   let buttons = [-2, -1, 0, 1, 2];
   let pageCount = 0;
 
@@ -96,6 +98,11 @@
     margin-top: 1em;
   }
 
+  .small {
+    font-size:0.8rem;
+    color:var(--muted-color);
+  }
+
 </style>
 
 {#if search}
@@ -135,16 +142,16 @@
 </table>
 
 {#if filteredRows.length > pageSize}
-<div class="center muted"><small>{filteredRows.length} total results ({Math.ceil(filteredRows.length / pageSize)} pages)</small></div>
 <slot name="bottom">
   <div class="slot-bottom">
     <svelte:component
-      this={Pagination}
-      {page}
-      {pageSize}
-      {serverSide}
-      count={filteredRows.length - 1}
-      on:pageChange={onPageChange} />
+    this={Pagination}
+    {page}
+    {pageSize}
+    {serverSide}
+    count={filteredRows.length - 1}
+    on:pageChange={onPageChange} />
   </div>
+  <div class="center small"><small>{filteredRows.length} total results ({Math.ceil(filteredRows.length / pageSize)} pages)</small></div>
 </slot>
 {/if}
