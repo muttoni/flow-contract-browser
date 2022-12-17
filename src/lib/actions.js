@@ -1,4 +1,8 @@
 export async function search(term) {
+  if(term.length < 3) {
+    return []
+  }
+  
   if(term.substring(0,2) === '0x') {
     term = "A."+term.substring(2);
   }

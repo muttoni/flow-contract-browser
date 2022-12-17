@@ -12,13 +12,13 @@
       goto("/" + e.detail?.uuid)
     }
   }
-  
-  const getOptionLabel = (option) => option.uuid;
+
+  let filterText;
 
 </script>
 
 <div class="themed">
-  <Select {loadOptions} {itemId} hideEmptyState={true} placeholder=" 🔍 Search for contracts or accounts" on:input={handleSelect}>
+  <Select bind:filterText={filterText} {loadOptions} {itemId} hideEmptyState={false} placeholder=" 🔍 Search for contracts or accounts" on:input={handleSelect}>
   	<div class="item" slot="item" let:item>
       <Item {item} />
     </div>
@@ -26,5 +26,23 @@
     <div class="" slot="selection" let:selection>
       {selection.uuid}
     </div>
+
+    <svelte:fragment slot="empty">
+      <div class="empty">
+        {#if filterText?.length < 3}
+          <small>Please type at least 3 characters.</small>
+        {:else}
+          <span>No results found.</span>
+        {/if}
+      </div>
+    </svelte:fragment>  
   </Select>
 </div>
+
+
+<style>
+  .empty {
+    padding: 30px;
+    text-align: center;
+  }
+</style>

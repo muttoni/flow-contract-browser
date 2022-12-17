@@ -69,17 +69,8 @@
 
 
 <style>
-  /* .table {
+   .table {
     width: 100%;
-    border-collapse: collapse;
-  }
-
-  .table :global(th), .table :global(td) {
-    position: relative;
-  } */
-
-  .table {
-    width: auto;
     border-collapse: collapse;
   }
 
@@ -103,63 +94,6 @@
     /* float: left; */
     width: 100%;
     margin-top: 1em;
-  }
-
-  @media screen and (max-width: 520px) {
-    table.responsive {
-      border: 0;
-    }
-
-    table.responsive :global(thead) {
-      border: none;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-    }
-
-    table.responsive :global(tr) {
-      display: block;
-      padding-bottom: 0.2em;
-      margin-bottom: 0.2em;
-      border-bottom: 1px solid var(--form-element-border-color);
-    }
-
-    table.responsive :global(td) {
-      display: block;
-      font-size: 0.7em;
-      text-align: right;
-    }
-
-    table :global(.table-image) {
-      max-width: 50px;
-      max-height: 25px;
-      display:inline;
-    }
-
-    table.responsive :global(td::before) {
-      /*
-	* aria-label has no advantage, it won't be read inside a table content: attr(aria-label);
-	*/
-      content: attr(data-label);
-      float: left;
-      font-weight: bold;
-    }
-
-    table.responsive :global(td[data-label-normal]::before) {
-      font-weight: normal;
-    }
-
-    table.responsive :global(td[data-label-upper]::before) {
-      text-transform: uppercase;
-    }
-
-    table.responsive :global(td:last-child),table.responsive :global(tr:last-child) {
-      border-bottom: 0;
-    }
   }
 
 </style>
@@ -200,7 +134,8 @@
   <slot name="foot" />
 </table>
 
-{#if filteredRows.length >= pageSize}
+{#if filteredRows.length > pageSize}
+<div class="center muted"><small>{filteredRows.length} total results ({Math.ceil(filteredRows.length / pageSize)} pages)</small></div>
 <slot name="bottom">
   <div class="slot-bottom">
     <svelte:component

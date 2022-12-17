@@ -118,17 +118,19 @@
     />
 </div>
 
-<div>
+<div class="table">
   <h2>🔥 Top contracts</h2>
   <ContractTable contracts={topContracts} />
 </div>
 
 {#if data.latest?.length > 0}
-<h2>🆕 Recently deployed contracts</h2>
-<ContractTable contracts={data.latest} />
+<div class="table">
+  <h2>🆕 Recently deployed contracts</h2>
+  <ContractTable contracts={data.latest} showDependencies={false} />
+</div>
 {/if}
 
-<div>
+<div class="table">
   <h2>🐳 Top deploying accounts</h2>
   <TopAccountTable accounts={topAccounts} />
 </div>
@@ -150,6 +152,10 @@
   .grid {
     justify-content: center;
     
+  }
+
+  .table {
+    max-width: 600px;
   }
 
 

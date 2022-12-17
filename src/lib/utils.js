@@ -33,3 +33,9 @@ export function getContractName(uuid) {
 export function getContractAddress(uuid) {
   return "0x" + uuid.split(".")[1]
 }
+
+export function makeContractObjectFromUuid(uuids) {
+  return uuids.map((uuid) => {
+    return { uuid }
+  })
+}

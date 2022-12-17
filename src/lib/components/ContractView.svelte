@@ -1,6 +1,8 @@
 <script>
   import CadenceCode from '$lib/components/CadenceCode.svelte';
   import CopyBadge from '$lib/components/CopyBadge.svelte';
+  import ContractTable from './ContractTable.svelte';
+  import { makeContractObjectFromUuid } from '$lib/utils';
   
   export let name = '';
   export let dependants = [];
@@ -9,10 +11,6 @@
   export let uuid;
   export let code;
 
-  let viewAllDependants = false;
-  let depFilter = '';
-
-  $: depFilteredResults = dependants?.filter(x => x.toLowerCase().includes(depFilter.toLowerCase()))
 </script>
 
 <article>
@@ -41,62 +39,16 @@
     </div>
     <div class="">
       <h3>Dependency Information</h3>
+
       <p class="badge-caption">Depends on <span class="figure">{dependencies?.length}</span> contracts </p>
-      <ul class="dep-list">
-        {#if dependencies?.length > 0}
-          {#each dependencies as dep}
-            <li><a href="/{dep}">{dep}</a></li>
-          {/each}
-        {/if}
-      </ul>
+      {#if dependencies?.length > 0}
+      <ContractTable contracts={makeContractObjectFromUuid([...dependencies])} showDependencies={false}></ContractTable>
+      {/if}
 
       <p class="badge-caption">{name} Is Used by  <span class="figure">{dependants?.length}</span> contracts </p>
-      {#if dependants?.length > 20 || depFilter.length > 0}
-        <input type="text" bind:value={depFilter} placeholder="Filter...">
+      {#if dependants?.length}
+      <ContractTable contracts={makeContractObjectFromUuid([...dependants])} showDependencies={false}></ContractTable>
       {/if}
-      <ul class="dep-list">
-        {#if dependants?.length > 0 && viewAllDependants === false}
-          {#each depFilteredResults as dep, i}
-            {#if i < 50}
-            <li><a href="/{dep}">{dep}</a></li>
-            {/if}
-          {/each}
-          {#if dependants.length >= 50}
-            <li>... and {dependants.length - Math.min(50, depFilteredResults.length)} more.</li> <button on:click={() => viewAllDependants = true}>Load all</button>
-          {/if}
-        {/if}
-
-        {#if dependants?.length > 0 && viewAllDependants === true}
-          {#each dependants as dep}
-            <li><a href="/{dep}">{dep}</a></li>
-          {/each}
-        {/if}
-      </ul>
-
-      <!-- {#if projectName}
-      <div class="project-avatar">
-        <img src="{projectLogo}" alt="Logo" />
-        <span>{projectName}</span>
-      </div>
-      <p><small>{projectDescription}</small></p>
-      <a role="button" class="secondary" href="{projectUrl}">Visit Project Website</a>
-      <a role="button" class="secondary outline" href="https://github.com/muttoni/flow-contract-browser/blob/main/src/lib/metajs">Edit Metadata</a>
-      <hr>
-      <span class="badge-caption">Contract Description</span>
-      <p class="mb-1">{contractDescription}</p>
-
-        <span class="badge-caption">Related Contracts</span>
-        <ul>
-          {#each relatedContracts as relatedContract}
-            <li><a href="/{relatedContract}">{relatedContract}</a></li>
-          {/each}
-        </ul>
-
-      {:else}
-      <div class="empty-text">
-        <small><center>No metadata available.<br/><a href="https://github.com/muttoni/flow-contract-browser/blob/main/src/lib/metajs">Contribute it!</center></small>
-        </div>
-        {/if} -->
       </div>
     </div>
 

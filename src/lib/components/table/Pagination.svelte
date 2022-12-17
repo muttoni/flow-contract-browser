@@ -53,8 +53,8 @@
 
   button {
     margin-left: 5px;
-    font-size: 0.8rem;
-    padding: 0.5rem 0.5rem;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.2rem;
   }
 
   /* button {
