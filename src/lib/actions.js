@@ -1,6 +1,6 @@
 export async function search(term) {
   if(term.substring(0,2) === '0x') {
-    term = term.substring(2);
+    term = "A."+term.substring(2);
   }
 
   if(term) {
