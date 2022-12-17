@@ -1,7 +1,97 @@
 <script>
   import StatCard from '$lib/components/StatCard.svelte';
+  import ContractTable from '$lib/components/ContractTable.svelte'
   import { timeSince } from '$lib/utils'
+    import TopAccountTable from '../lib/components/TopAccountTable.svelte';
   export let data;
+
+
+  // temporary, while endpoint is being prepared
+  const topContracts = [
+    { 
+      uuid: "A.1d7e57aa55817448.NonFungibleToken",
+      dependants_count: 1801,
+    },
+    { 
+      uuid: "A.f233dcee88fe0abe.FungibleToken",
+      dependants_count: 1089,
+    },
+    { 
+      uuid: "A.1d7e57aa55817448.MetadataViews",
+      dependants_count: 894,
+    },
+    { 
+      uuid: "A.1654653399040a61.FlowToken",
+      dependants_count: 179,
+    },
+    { 
+      uuid: "A.3c5959b568896393.FUSD",
+      dependants_count: 98,
+    },
+    { 
+      uuid: "A.b78ef7afa52ff906.SwapConfig",
+      dependants_count: 51,
+    },
+    { 
+      uuid: "A.b78ef7afa52ff906.SwapInterfaces",
+      dependants_count: 49,
+    },
+    { 
+      uuid: "A.b063c16cac85dbd1.SwapFactory",
+      dependants_count: 48,
+    },
+    { 
+      uuid: "A.b78ef7afa52ff906.SwapError",
+      dependants_count: 48,
+    },
+    { 
+      uuid: "A.6a07dbeb03167a13.EmeraldPass",
+      dependants_count: 24,
+    }
+  ]
+
+  const topAccounts = [
+    {
+      address: "0x635a9971e6bdc54a",
+      contracts_deployed: 83,
+    },
+    {
+      address: "0x097bafa4e0b48eef",
+      contracts_deployed: 37,
+    },
+    {
+      address: "0x329feb3ab062d289",
+      contracts_deployed: 18,
+    },
+    {
+      address: "0x82ed1b9cba5bb1b3",
+      contracts_deployed: 15,
+    },
+    {
+      address: "0xa49cc0ee46c54bfb",
+      contracts_deployed: 13,
+    },
+    {
+      address: "0x24de869c5e40b2eb",
+      contracts_deployed: 11,
+    },
+    {
+      address: "0xb25138dbf45e5801",
+      contracts_deployed: 10,
+    },
+    {
+      address: "0x2c1a70beabf07249",
+      contracts_deployed: 10,
+    },
+    {
+      address: "0x39eeb4ee6f30fc3f",
+      contracts_deployed: 10,
+    },
+    {
+      address: "0x231cc0dbbcffc4b7",
+      contracts_deployed: 10,
+    }
+  ]
 </script>
 
 <svelte:head>
@@ -16,7 +106,7 @@
     number={data?.status?.synced_height?.toLocaleString("en-US") || "Offline"}
     label="Synced Block Height" 
     /> -->
-    <div class="status">
+    <div class="status mb-1">
       <div>Status: <span>{data?.status?.success === true ? "✅ ONLINE" : "💤 OFFLINE"}</span> </div>
       <div>Network: <span>{data?.status?.network || "Offline"}</span></div>
       <div>Block height: <code>{data?.status?.synced_height?.toLocaleString("en-US")}</code></div>
@@ -28,52 +118,20 @@
     />
 </div>
 
-<div class="grid">
-  <div>
-    <h2>🔥 Top contracts</h2>
-    <ul>
-      <li><a href="/A.1d7e57aa55817448.NonFungibleToken">NonFungibleToken</a>
-      <li><a href="/A.f233dcee88fe0abe.FungibleToken">FungibleToken</a>
-      <li><a href="/A.1d7e57aa55817448.MetadataViews">MetadataViews</a>
-      <li><a href="/A.1654653399040a61.FlowToken">FlowToken</a>
-      <li><a href="/A.3c5959b568896393.FUSD">FUSD</a>
-      <li><a href="/A.b78ef7afa52ff906.SwapConfig">SwapConfig</a>
-      <li><a href="/A.b78ef7afa52ff906.SwapInterfaces">SwapInterfaces</a>
-      <li><a href="/A.b063c16cac85dbd1.SwapFactory">SwapFactory</a>
-      <li><a href="/A.b78ef7afa52ff906.SwapError">SwapError</a>
-      <li><a href="/A.6a07dbeb03167a13.EmeraldPass">EmeraldPass</a>
-    </ul>  
-  </div>
-  <div>
-    <h2>🐳 Top deploying accounts</h2>
-    <ul>
-      <li><a href="/account/0x635a9971e6bdc54a">0x635a9971e6bdc54a (83 deployed contracts)</a>
-      <li><a href="/account/0x097bafa4e0b48eef">0x097bafa4e0b48eef (37 deployed contracts)</a>
-      <li><a href="/account/0x329feb3ab062d289">0x329feb3ab062d289 (18 deployed contracts)</a>
-      <li><a href="/account/0x82ed1b9cba5bb1b3">0x82ed1b9cba5bb1b3 (15 deployed contracts)</a>
-      <li><a href="/account/0xa49cc0ee46c54bfb">0xa49cc0ee46c54bfb (13 deployed contracts)</a>
-      <li><a href="/account/0x24de869c5e40b2eb">0x24de869c5e40b2eb (11 deployed contracts)</a>
-      <li><a href="/account/0xb25138dbf45e5801">0xb25138dbf45e5801 (10 deployed contracts)</a>
-      <li><a href="/account/0x2c1a70beabf07249">0x2c1a70beabf07249 (10 deployed contracts)</a>
-      <li><a href="/account/0x39eeb4ee6f30fc3f">0x39eeb4ee6f30fc3f (10 deployed contracts)</a>
-      <li><a href="/account/0x231cc0dbbcffc4b7">0x231cc0dbbcffc4b7 (10 deployed contracts)</a>
-    </ul>
-  </div>
+<div>
+  <h2>🔥 Top contracts</h2>
+  <ContractTable contracts={topContracts} />
 </div>
 
 {#if data.latest?.length > 0}
-
 <h2>🆕 Recently deployed contracts</h2>
-
-<ul>
-  {#if data?.latest}
-    {#each data.latest as contract}
-    <li><a href="/{contract.uuid}">{contract.uuid}</a></li>
-    {/each}
-  {/if}
-</ul>
+<ContractTable contracts={data.latest} />
 {/if}
 
+<div>
+  <h2>🐳 Top deploying accounts</h2>
+  <TopAccountTable accounts={topAccounts} />
+</div>
 
 <style>
   h2 {

@@ -25,3 +25,11 @@ export function timeSince(date) {
   }
   return Math.floor(seconds) + " seconds";
 }
+
+
+export function getContractName(uuid) {
+  return uuid.split(".")[2]
+}
+export function getContractAddress(uuid) {
+  return "0x" + uuid.split(".")[1]
+}

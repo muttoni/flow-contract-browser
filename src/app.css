@@ -78,3 +78,7 @@ small {
   align-items: center;
   margin-bottom:0;
 }
+
+.text-end {
+  text-align:end;
+}
