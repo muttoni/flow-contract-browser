@@ -103,7 +103,7 @@
     }
 
     kbd {
-      max-width: 350px;
+      max-width: 100%;
       text-overflow: ellipsis;
       overflow-y:hidden;
       white-space: nowrap;
