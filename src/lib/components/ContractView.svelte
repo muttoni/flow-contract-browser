@@ -32,13 +32,13 @@
         <h3>Basic Information</h3>
         <p class="badge-caption">Location <CopyBadge text={uuid} /></p>
         <kbd>{uuid}</kbd>
-        <a role="button" class="mt-05" target="_blank" rel="noreferrer" href="https://flow-view-source.com/mainnet/account/{address}/contract/{name}">View on FlowViewSource</a>
+        <a role="button" class="mt-05 block" target="_blank" rel="noreferrer" href="https://flow-view-source.com/mainnet/account/{address}/contract/{name}">View on FlowViewSource</a>
       </div>
       <div class="mb-1">
         <p class="badge-caption">Address <CopyBadge text={address} /></p>
         <kbd>{address}</kbd>
-        <a role="button" class="mt-05" target="_blank" rel="noreferrer" href="https://flowview.app/account/{address}">Inspect account on FlowView.app</a>
-        <a role="button" class="mt-05 mb-1 outline" target="_blank" rel="noreferrer" href="/account/{address}">All contracts involving {address} &rarr;</a>
+        <a role="button" class="mt-05 block" target="_blank" rel="noreferrer" href="https://flowview.app/account/{address}">Inspect account on FlowView.app</a>
+        <a role="button" class="mt-05 mb-1 outline block" target="_blank" rel="noreferrer" href="/account/{address}">All contracts involving {address} &rarr;</a>
       </div>
       <div class="mb-1">
         <p class="badge-caption">Import <CopyBadge text="import {name} from {address}" /></p>

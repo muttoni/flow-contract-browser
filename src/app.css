@@ -48,6 +48,10 @@ small {
   margin-bottom:1rem;
 }
 
+.block {
+  display:block;
+}
+
 *, .themed, .svelte-select-list, .list-item, .selectContainer {
   --border : 1px solid var(--muted-border-color) !important;
   --borderHoverColor : var(--muted-color);
