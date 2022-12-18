@@ -42,7 +42,7 @@
       </div>
       <div class="mb-1">
         <p class="badge-caption">Import <CopyBadge text="import {name} from {address}" /></p>
-        <CadenceCode code="import {name} from {address}" />
+        <CadenceCode code="import {name} from {address}" link={false} lineNumbers={false} />
       </div>
     </div>
 
