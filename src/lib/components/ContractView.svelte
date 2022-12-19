@@ -88,6 +88,7 @@
     }
     .badge-caption {
       font-size: 0.7rem;
+      margin-top:1.5rem;
       text-transform: uppercase;
     }
     .claimed-badge {
