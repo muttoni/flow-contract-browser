@@ -99,48 +99,52 @@
   <meta property="og:title" content="Flow Contract Browser" />
 </svelte:head>
 
-<h2>Overview</h2>
+<article>
+  <header>
+    <h2>👀 Overview</h2>
+  </header>
+  <div class="grid">
+    <!-- <StatCard 
+      number={data?.status?.synced_height?.toLocaleString("en-US") || "Offline"}
+      label="Synced Block Height" 
+      /> -->
+      <div class="status mb-1">
+        <div>Status: <span>{data?.status?.success === true ? "✅ ONLINE" : "💤 OFFLINE"}</span> </div>
+        <div>Network: <span>{data?.status?.network || "Offline"}</span></div>
+        <div>Block height: <code>{data?.status?.synced_height?.toLocaleString("en-US")}</code></div>
+        <div>Last updated: <span>{timeSince(new Date(data?.status?.last_sync_at + "Z"), new Date())} ago</span></div>
+      </div>
+      <StatCard 
+        number={data?.status?.contract_amount?.toLocaleString("en-US") || "Offline"}
+        label="Contracts on Mainnet" 
+      />
+  </div>
+</article>
 
-<div class="grid">
-  <!-- <StatCard 
-    number={data?.status?.synced_height?.toLocaleString("en-US") || "Offline"}
-    label="Synced Block Height" 
-    /> -->
-    <div class="status mb-1">
-      <div>Status: <span>{data?.status?.success === true ? "✅ ONLINE" : "💤 OFFLINE"}</span> </div>
-      <div>Network: <span>{data?.status?.network || "Offline"}</span></div>
-      <div>Block height: <code>{data?.status?.synced_height?.toLocaleString("en-US")}</code></div>
-      <div>Last updated: <span>{timeSince(new Date(data?.status?.last_sync_at + "Z"), new Date())} ago</span></div>
-    </div>
-    <StatCard 
-      number={data?.status?.contract_amount?.toLocaleString("en-US") || "Offline"}
-      label="Contracts on Mainnet" 
-    />
-</div>
-
-<div class="table">
-  <h2>🔥 Top contracts</h2>
-  <ContractTable contracts={topContracts} />
-</div>
+<article>
+  <header><h2>🔥 Top contracts</h2></header>
+  <div class="table">
+    <ContractTable contracts={topContracts} />
+  </div>
+</article>
 
 {#if data.latest?.length > 0}
-<div class="table">
-  <h2>🆕 Recently deployed contracts</h2>
-  <ContractTable contracts={data.latest} showDependencies={false} />
-</div>
+<article>
+  <header><h2>🆕 Recently deployed contracts</h2></header>
+  <div class="table">
+    <ContractTable contracts={data.latest} showDependencies={false} />
+  </div>
+</article>
 {/if}
 
-<div class="table">
-  <h2>🐳 Top deploying accounts</h2>
-  <TopAccountTable accounts={topAccounts} />
-</div>
+<article>
+  <header><h2>🐳 Top deploying accounts</h2></header>
+  <div class="table">
+    <TopAccountTable accounts={topAccounts} />
+  </div>
+</article>
 
 <style>
-  h2 {
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
-
   .status {
     display:flex;
     flex-direction: column;
@@ -153,10 +157,4 @@
     justify-content: center;
     
   }
-
-  .table {
-    max-width: 600px;
-  }
-
-
 </style>

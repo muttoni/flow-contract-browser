@@ -14,17 +14,19 @@
 </script>
 
 <article>
-  <hgroup>
-    <h2>
-      {name}
-      {#if dependants?.length > 5}
-      <div class="claimed-badge success">
-        Popular!
-      </div>
-      {/if}
-    </h2>
-    <h3>Deployed by <a href="/account/{address}">{address}</a></h3>
-  </hgroup>
+  <header>
+    <hgroup>
+      <h2>
+        {name}
+        {#if dependants?.length > 5}
+        <div class="claimed-badge success">
+          Popular!
+        </div>
+        {/if}
+      </h2>
+      <h3>Deployed by <a href="/account/{address}">{address}</a></h3>
+    </hgroup>
+  </header>
 
   <div class="grid">
     <div>
@@ -62,12 +64,15 @@
     </div>
 
     <hr>
-    <h3 class="mt-1">Contract Code <CopyBadge text={code}/></h3>
-
-    <CadenceCode code={code} />
+    
     
   </article>
-  
+  <article>
+    <header>
+      <h2>Contract Code <CopyBadge text={code}/></h2>
+    </header>
+    <CadenceCode code={code} />
+  </article>
   <style>
     
     h2 {
@@ -75,13 +80,17 @@
       justify-content: start;
       vertical-align: middle;
       align-items: center;
+      gap: 10px;
+    }
+
+    hgroup {
+      margin-bottom:0;
     }
     .badge-caption {
       font-size: 0.7rem;
       text-transform: uppercase;
     }
     .claimed-badge {
-      margin-left:1rem;
       padding: 0.15rem 0.5rem;
       border: 1px solid var(--green);
       border-radius: 100px;
@@ -92,10 +101,6 @@
 
     .success {
       color: var(--green);
-    }
-
-    h3 {
-      margin-bottom: 0.8rem;
     }
 
     .figure {
