@@ -59,5 +59,12 @@
     text-overflow: ellipsis;
     overflow-y: hidden;
     white-space: nowrap;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
   }
+
+  td::-webkit-scrollbar {
+    display: none;
+  }
+
 </style>
