@@ -54,10 +54,6 @@
 
 
 <style>
-  .mono {
-    font-family:monospace;
-  }
-
   td {
     max-width: 250px;
     text-overflow: ellipsis;

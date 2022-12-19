@@ -90,3 +90,7 @@ small {
 .text-end {
   text-align:end;
 }
+
+.mono {
+  font-family:monospace;
+}

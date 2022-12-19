@@ -17,7 +17,7 @@
   </hgroup>
   <a role="button" class="mb-1" target="_blank" rel="noreferrer" href="https://flowview.app/account/{account}">Inspect account on FlowView.app</a>
   <div class="mb-1"> 
-    <h4>Owned by {account}</h4>
+    <h4>Contracts deployed by <span class="mono">{account}</span></h4>
     {#if contracts?.filter((s) => s.uuid.includes(account.substring(2)))?.length > 0}
     <ContractTable contracts={contracts?.filter((s) => s.uuid.includes(account.substring(2)))}></ContractTable>
     {:else}
@@ -56,10 +56,6 @@
   
   .success {
     color: var(--green);
-  }
-  
-  .dep-list {
-    font-size:0.8rem;
   }
   
   h2 {
