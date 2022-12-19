@@ -23,7 +23,6 @@ $: createStarryNight([sourceCadence])
       
       if(link) {
         html = detectAndAddAnchorLinksToAccounts(html)
-        console.log(html)
       }
 
       htmlx = html;

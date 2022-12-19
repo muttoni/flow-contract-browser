@@ -10,7 +10,7 @@
   let globalLabels;
 
   export function setTableLabels(labels) {
-    globalLabels = labels;
+    globalLabels = {...labels};
   }
 
   export const setPaginationLabels = _setPaginationLabels;
@@ -37,7 +37,10 @@
     ...globalLabels
   };
 
+  setTableLabels(labels);
   setSearchLabels(labels);
+  setPaginationLabels(labels);
+  setSortLabels(labels);
 
   let buttons = [-2, -1, 0, 1, 2];
   let pageCount = 0;

@@ -2,13 +2,15 @@
   //Row component is optional and only serves to render odd/even row, you can use <tr> instead.
   //Sort component is optional
 
-  import Table, { Row, Search } from "$lib/components/table/Table.svelte";
+  import Table, { Row } from "$lib/components/table/Table.svelte";
   import {getContractAddress, getContractName} from "$lib/utils"
 
   export let contracts = [];
   
   export let search = contracts?.length > 10;
   export let showDependencies = true;
+
+  const searchLabel = `Filter ${contracts ? contracts?.length : ''} contracts...` 
 
   let pageCount = 0; //first page
   let pageSize = 10;
@@ -26,7 +28,7 @@
   let:rows={contracts}
   labels={{ 
     empty: "No contracts to show...", 
-    placeholder: `Filter ${contracts.length} contracts...` 
+    placeholder: searchLabel
   }}>
   <thead slot="head">
     <tr>
