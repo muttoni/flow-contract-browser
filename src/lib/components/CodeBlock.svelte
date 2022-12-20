@@ -1,5 +1,5 @@
 <script>
-  import CopyBadge from '../../../../contract-browser/src/lib/components/CopyBadge.svelte';
+  import CopyBadge from '$lib/components/CopyBadge.svelte';
   import { browser } from '$app/environment'
 
   export let lineNumbers = true;
