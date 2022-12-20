@@ -94,3 +94,11 @@ small {
 .mono {
   font-family:monospace;
 }
+
+code, pre {
+  color:inherit;
+}
+
+code a {
+  border-bottom: 1px dotted;
+}
