@@ -24,7 +24,7 @@
         </div>
         {/if}
       </h2>
-      <h3>Deployed by <a href="/account/{address}">{address}</a></h3>
+      <h3>Deployed by <a data-sveltekit-reload href="/account/{address}">{address}</a></h3>
     </hgroup>
   </header>
 
@@ -40,7 +40,7 @@
         <p class="badge-caption">Address <CopyBadge text={address} /></p>
         <kbd>{address}</kbd>
         <a role="button" class="mt-05 block" target="_blank" rel="noreferrer" href="https://flowview.app/account/{address}">Inspect account on FlowView.app</a>
-        <a role="button" class="mt-05 mb-1 outline block" target="_blank" rel="noreferrer" href="/account/{address}">All contracts involving {address} &rarr;</a>
+        <a role="button" class="mt-05 mb-1 outline block" target="_blank" rel="noreferrer" data-sveltekit-reload href="/account/{address}">All contracts involving {address} &rarr;</a>
       </div>
       <div class="mb-1">
         <p class="badge-caption">Import <CopyBadge text="import {name} from {address}" /></p>

@@ -8,8 +8,8 @@
   let itemId = 'uuid';
 
   let handleSelect = (e) => {
-    if(e.detail && e.detail.uuid) {
-      goto("/" + e.detail?.uuid)
+    if(e.detail && e.detail.uuid && window) {
+      window.location.href= "/"+ e.detail.uuid;
     }
   }
 

@@ -42,8 +42,8 @@
   <tbody>
     {#each contracts as row, index (row)}
       <Row {index}>
-        <td data-label="Contract name"><a href="/{row.uuid}">{getContractName(row.uuid)}</a></td>
-        <td data-label="Address"><span class="mono"><a href="/account/{getContractAddress(row.uuid)}">{getContractAddress(row.uuid)}</a></span></td>
+        <td data-label="Contract name"><a data-sveltekit-reload href="/{row.uuid}">{getContractName(row.uuid)}</a></td>
+        <td data-label="Address"><span class="mono"><a data-sveltekit-reload href="/account/{getContractAddress(row.uuid)}">{getContractAddress(row.uuid)}</a></span></td>
         {#if showDependencies}
         <td data-label="Used by" class="text-end"><span class="mono">{row.dependants_count}</span></td>
         {/if}
