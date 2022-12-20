@@ -39,6 +39,7 @@ $: createStarryNight([sourceCadence])
 <style>
   code, pre {
     color:inherit;
+    position:relative;
   }
 
   :global(code a) {
@@ -47,6 +48,8 @@ $: createStarryNight([sourceCadence])
 
   :global(code.lineNumbers .line::before) {
     content: attr(data-line-number);
+    position:sticky;
+    left:0;
     padding-right: 1em; /* space after numbers */
     margin-right: 5px;
     display:inline-block;

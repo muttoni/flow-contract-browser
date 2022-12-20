@@ -5,16 +5,18 @@
 </script>
 
 <article>
-  <hgroup>
-    <h2>
-      <h2>{account}</h2>
-      {#if contracts?.length > 5}
-      <div class="claimed-badge success">
-        Popular!
-      </div>
-      {/if}
-    </h2>
-  </hgroup>
+  <header>
+    <hgroup>
+      <h2>
+        <h2>{account}</h2>
+        {#if contracts?.length > 5}
+        <div class="claimed-badge success">
+          Popular!
+        </div>
+        {/if}
+      </h2>
+    </hgroup>
+  </header>
   <a role="button" class="mb-1" target="_blank" rel="noreferrer" href="https://flowview.app/account/{account}">Inspect account on FlowView.app</a>
   <div class="mb-1"> 
     <h4>Contracts deployed by <span class="mono">{account}</span></h4>
@@ -38,11 +40,16 @@
 <style>
   
   h2 {
-    display:flex;
-    justify-content: start;
-    vertical-align: middle;
-    align-items: center;
-  }
+      display:flex;
+      justify-content: start;
+      vertical-align: middle;
+      align-items: center;
+      gap: 10px;
+    }
+
+    hgroup {
+      margin-bottom:0;
+    }
   
   .claimed-badge {
     margin-left:1rem;
