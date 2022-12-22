@@ -2,7 +2,7 @@
   import Select from 'svelte-select';
   import Item from '$lib/components/ContractPickerItem.svelte';
   import { search } from '$lib/actions';
-  import { goto } from "$app/navigation";
+  // import { goto } from "$app/navigation";
 
   let loadOptions = search;
   let itemId = 'uuid';

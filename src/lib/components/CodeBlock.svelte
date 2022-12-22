@@ -60,7 +60,8 @@
   }
 
   .code-container {
-    overflow:scroll;
+    overflow: hidden;
+    width: -webkit-fill-available; /* :^) */
   }
 
   .lines-container {
