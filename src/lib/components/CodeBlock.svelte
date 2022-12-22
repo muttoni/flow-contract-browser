@@ -61,7 +61,7 @@
 
   .code-container {
     overflow: hidden;
-    width: -webkit-fill-available; /* :^) */
+    width: -webkit-fill-available; /* :^) Thanks raven! */
   }
 
   .lines-container {
