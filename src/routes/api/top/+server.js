@@ -13,7 +13,7 @@ export async function GET({params}) {
   let res = {};
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/contracts/search?keyword=${params.query}`, options)
+    const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/contracts?order_by=dependants_count&order_by_direction=desc&limit=10`, options)
     res = await response.json()
     res.success = true;
   } catch(e) {

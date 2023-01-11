@@ -124,7 +124,7 @@
 <article>
   <header><h2>🔥 Top contracts</h2></header>
   <div class="table">
-    <ContractTable contracts={topContracts} />
+    <ContractTable contracts={data.top} />
   </div>
 </article>
 
@@ -137,12 +137,12 @@
 </article>
 {/if}
 
-<article>
+<!-- <article>
   <header><h2>🐳 Top deploying accounts</h2></header>
   <div class="table">
     <TopAccountTable accounts={topAccounts} />
   </div>
-</article>
+</article> -->
 
 <style>
   .status {

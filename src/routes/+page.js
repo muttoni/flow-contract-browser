@@ -11,16 +11,22 @@ export async function load({ fetch }) {
       status.success = true
     }
   
-    const rawLatest = await fetch(`/api/latest`)
+    const rawLatest = await fetch(`/api/latest/10`)
     const jsonLatest = await rawLatest?.json()
     const latest = jsonLatest?.success && jsonLatest?.data ? jsonLatest.data : {}
 
-    return { status, latest};
+      
+    const rawTop = await fetch(`/api/top`)
+    const jsonTop = await rawTop?.json()
+    const top = jsonTop?.success && jsonTop?.data ? jsonTop.data : {}
+
+    return { status, latest, top};
   } catch(e) {
     console.log(e)
     return {
       status: {},
-      latest: []
+      latest: [],
+      top: [],
     }
   }
 

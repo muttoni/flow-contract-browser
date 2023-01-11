@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 
 /** @type {import('./$types').RequestHandler} */
-export async function GET({params}) {
+export async function GET({ params }) {
 
   const options = {
     method: 'GET',
@@ -13,7 +13,7 @@ export async function GET({params}) {
   let res = {};
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/contracts/search?keyword=${params.query}`, options)
+    const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/contracts/${params.uuid}/dependencies`, options)
     res = await response.json()
     res.success = true;
   } catch(e) {
@@ -21,5 +21,5 @@ export async function GET({params}) {
     res.success = false;
   }
 
-  return json(res);
+  return new json(res);
 };
