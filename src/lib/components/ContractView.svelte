@@ -3,11 +3,12 @@
   import CopyBadge from '$lib/components/CopyBadge.svelte';
   import ContractTable from './ContractTable.svelte';
   import { makeContractObjectFromUuid } from '$lib/utils';
+  import { getDependants, getDependencies} from '$lib/actions';
   
   export let name = '';
+  export let address = '0x';
   export let dependants = [];
   export let dependencies = [];
-  export let address = '0x';
   export let uuid;
   export let code;
 
@@ -51,15 +52,28 @@
     <div class="">
       <h3>Dependency Information</h3>
 
-      <p class="badge-caption">Depends on <span class="figure">{dependencies?.length}</span> contracts </p>
-      {#if dependencies?.length > 0}
-      <ContractTable contracts={makeContractObjectFromUuid([...dependencies])} showDependencies={false}></ContractTable>
+      {#await getDependencies(uuid)}
+      <p class="badge-caption">Loading dependencies...</p>
+      {:then dependencyObject}
+      <p class="badge-caption">Depends on <span class="figure">{dependencyObject?.data.total_dependants_count}</span> contracts </p>
+      {#if dependencyObject?.data.dependencies?.length > 0}
+      <ContractTable contracts={makeContractObjectFromUuid([...dependencyObject?.data.dependencies])} showDependencies={false}></ContractTable>
       {/if}
+      {:catch error}
+      <p class="badge-caption">Could not load dependencies.</p>
+      {/await}
 
-      <p class="badge-caption">{name} Is Used by  <span class="figure">{dependants?.length}</span> contracts </p>
-      {#if dependants?.length}
-      <ContractTable contracts={makeContractObjectFromUuid([...dependants])} showDependencies={false}></ContractTable>
+      {#await getDependants(uuid)}
+      <p class="badge-caption">Loading dependants...</p>
+      {:then dependantsObject}
+      <p class="badge-caption">{name} is used by <span class="figure">{dependantsObject?.data.total_dependants_count}</span> contracts </p>
+      {#if dependantsObject?.data.dependants?.length > 0}
+      <ContractTable contracts={makeContractObjectFromUuid([...dependantsObject?.data.dependants])} showDependencies={false}></ContractTable>
       {/if}
+      {:catch error}
+      <p class="badge-caption">Could not load dependants.</p>
+      {/await}
+
       </div>
     </div>
 

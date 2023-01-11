@@ -17,3 +17,16 @@ export async function search(term) {
   }
 
 }
+
+export async function getDependants(uuid) {
+  const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/contract/${uuid}/dependants`)
+  const json = await raw.json()
+  return json
+}
+
+export async function getDependencies(uuid) {
+  const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/contract/${uuid}/dependencies`)
+  const json = await raw.json()
+
+  return json
+}
