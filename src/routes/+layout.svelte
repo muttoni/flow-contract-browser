@@ -1,20 +1,21 @@
 <script>
-
   import "../app.css";
   import ContractSearcher from '$lib/components/ContractSearcher.svelte';
   import ThemePicker from '$lib/components/ThemePicker.svelte';
-
 </script>
 
+<nav class="container-fluid">
+  <ul>
+    <li><h1><img src="/logo.png" alt="logo"/>flow <span class="light-text">Contract Browser</span></h1></li>
+  </ul>
+  <ul>
+    <li>
+      <form method="get" action="/search"><input type="search" name="query" placeholder="Search"/></form>
+    </li>
+  </ul>
+</nav>
 
 <main class="container">
-  
- <a href="/">
-    <div class="logo">
-      <img src="/logo.png" alt="logo"/>
-      <h1>flow <span class="light-text">Contract Browser</span></h1>
-    </div>
-  </a>
   <ContractSearcher />
   <slot></slot>
 </main>
@@ -48,10 +49,8 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
     letter-spacing: normal;
   }
 
-  .logo {
-    display:flex;
-    align-items: center;
-    padding: 20px 0px;
+  nav {
+    margin-bottom:20px;
   }
 
   h1 {

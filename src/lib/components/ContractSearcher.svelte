@@ -18,7 +18,7 @@
 </script>
 
 <div class="themed">
-  <Select bind:filterText={filterText} {loadOptions} {itemId} hideEmptyState={false} placeholder=" 🔍 Search for contracts or accounts" on:input={handleSelect}>
+  <Select bind:filterText={filterText} {loadOptions} {itemId} hideEmptyState={false} placeholder=" ✨ Contract Quick Picker - find by contract name, account and contents " on:input={handleSelect}>
   	<div class="item" slot="item" let:item>
       <Item {item} />
     </div>
