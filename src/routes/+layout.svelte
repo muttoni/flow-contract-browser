@@ -6,11 +6,11 @@
 
 <nav class="container-fluid">
   <ul>
-    <li><h1><img src="/logo.png" alt="logo"/>flow <span class="light-text">Contract Browser</span></h1></li>
+    <li><h1><a href="/"><img src="/logo.png" alt="logo"/>flow <span class="light-text">Contract Browser</span></a></h1></li>
   </ul>
   <ul>
     <li>
-      <form method="get" action="/search"><input type="search" name="query" placeholder="Search"/></form>
+      <form action="/search" method="GET" data-sveltekit-reload><input type="search" name="query" placeholder="Search..."/></form>
     </li>
   </ul>
 </nav>
@@ -40,6 +40,10 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
     outline:none;
     background:transparent;
     user-select: none;
+  }
+  
+  a {
+    color: inherit;
   }
 
   .light-text {

@@ -1,10 +1,8 @@
 <script>
-    import CadenceCode from '../../lib/components/CadenceCode.svelte';
-import ContractTable from '../../lib/components/ContractTable.svelte';
+  import CadenceCode from '../../lib/components/CadenceCode.svelte';
+  import ContractTable from '../../lib/components/ContractTable.svelte';
 
   export let data;
-
-  console.log(data)
 
   const contracts = data?.results?.contracts;
   const code = data?.results?.code;
@@ -12,9 +10,10 @@ import ContractTable from '../../lib/components/ContractTable.svelte';
 
 <h1>Search Results</h1>
 
-<input type="search" placeholder="Search again..."/>
+<form method="/search" data-sveltekit-reload><input type="search" name="query" placeholder="Search again..."/></form>
 
-<h2>Found {contracts.length} Contracts</h2>
+
+<h2>Top {contracts.length} Contracts</h2>
 <ContractTable {contracts}></ContractTable>
 
 <h2>Top {Math.min(20, code.length)} Code Snippets</h2>
@@ -22,6 +21,7 @@ import ContractTable from '../../lib/components/ContractTable.svelte';
 <ul>
   {#each code.slice(0,20) as snippet}
   <li>
+    <kbd>{snippet.type}</kbd>
     <span>Used by {snippet.contracts_count} contracts</span>
     <CadenceCode code={snippet.code}></CadenceCode>
   </li>
@@ -37,6 +37,6 @@ import ContractTable from '../../lib/components/ContractTable.svelte';
   }
 
   span {
-
+    margin-left: 20px;
   }
 </style>
