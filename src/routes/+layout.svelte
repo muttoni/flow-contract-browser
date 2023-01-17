@@ -67,6 +67,10 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
     width:100%;
   }
 
+  nav ul.grow {
+    justify-content: end;
+  }
+
   .light-text {
     font-weight: 100;
     font-size: 1.8rem;
