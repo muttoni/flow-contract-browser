@@ -6,12 +6,14 @@ export const prerender = false;
 /** @type {import('./$types').PageLoad} */
 export async function load({ fetch, url }) {
 
+  const query = url.searchParams.get('query');
+
   try {
-    const rawContractSearch = await fetch(`/api/search/contract?query=${url.searchParams.get('query')}`)
+    const rawContractSearch = await fetch(`/api/search/contract?query=${query}`)
     const jsonContractSearch = await rawContractSearch?.json()
     const contractResults = jsonContractSearch?.success && jsonContractSearch?.data ? jsonContractSearch.data : {}
 
-    const rawCodeSearch = await fetch(`/api/search/code?query=${url.searchParams.get('query')}`)
+    const rawCodeSearch = await fetch(`/api/search/code?query=${query}`)
     const jsonCodeSearch = await rawCodeSearch?.json()
     const codeResults = jsonCodeSearch?.success && jsonCodeSearch?.data ? jsonCodeSearch.data : {}
 
@@ -19,7 +21,8 @@ export async function load({ fetch, url }) {
     return { 
       results: {
         contracts: contractResults,
-        code: codeResults
+        code: codeResults,
+        query
       } 
     };
   } catch(e) {

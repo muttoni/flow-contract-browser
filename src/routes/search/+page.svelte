@@ -8,15 +8,16 @@
   const code = data?.results?.code || [];
 </script>
 
-<h1>Search Results</h1>
+<h1>Search Results for '{data?.results?.query}'</h1>
 
 <form method="/search" data-sveltekit-reload><input type="search" name="query" placeholder="Search again in contracts and code..."/></form>
 
 
-<h2>Top {contracts.length} Contracts</h2>
+<h2>Contracts containing '{data?.results?.query}'</h2>
 <ContractTable {contracts}></ContractTable>
 
-<h2>Top {Math.min(20, code.length)} Code Snippets</h2>
+<h2>Code snippets containing '{data?.results?.query}'</h2>
+<br/>
 
 <ul>
   {#each code.slice(0,20) as snippet}
