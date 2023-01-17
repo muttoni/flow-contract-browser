@@ -10,7 +10,7 @@
   </ul>
   <ul>
     <li>
-      <form action="/search" method="GET" data-sveltekit-reload><input type="search" name="query" placeholder="Search..."/></form>
+      <form action="/search" method="GET" data-sveltekit-reload><input type="search" name="query" placeholder="Search code & contracts"/></form>
     </li>
   </ul>
 </nav>

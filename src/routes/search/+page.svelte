@@ -4,13 +4,13 @@
 
   export let data;
 
-  const contracts = data?.results?.contracts;
-  const code = data?.results?.code;
+  const contracts = data?.results?.contracts || [];
+  const code = data?.results?.code || [];
 </script>
 
 <h1>Search Results</h1>
 
-<form method="/search" data-sveltekit-reload><input type="search" name="query" placeholder="Search again..."/></form>
+<form method="/search" data-sveltekit-reload><input type="search" name="query" placeholder="Search again in contracts and code..."/></form>
 
 
 <h2>Top {contracts.length} Contracts</h2>
