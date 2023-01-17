@@ -7,7 +7,7 @@ export const prerender = false;
 export async function load({ fetch, url }) {
 
   try {
-    const rawContractSearch = await fetch(`/api/search/${url.searchParams.get('query')}`)
+    const rawContractSearch = await fetch(`/api/search/contract?query=${url.searchParams.get('query')}`)
     const jsonContractSearch = await rawContractSearch?.json()
     const contractResults = jsonContractSearch?.success && jsonContractSearch?.data ? jsonContractSearch.data : {}
 

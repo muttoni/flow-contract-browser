@@ -6,9 +6,9 @@
 
 <nav class="container-fluid">
   <ul>
-    <li><h1><a href="/"><img src="/logo.png" alt="logo"/>flow <span class="light-text">Contract Browser</span></a></h1></li>
+    <li><h1 class="logo"><a href="/"><img src="/logo.png" alt="logo"/><span class="flow">flow</span><span class="light-text">Contract Browser</span></a></h1></li>
   </ul>
-  <ul>
+  <ul class="grow">
     <li>
       <form action="/search" method="GET" data-sveltekit-reload><input type="search" name="query" placeholder="Search code & contracts"/></form>
     </li>
@@ -46,6 +46,27 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
     color: inherit;
   }
 
+  .logo {
+    white-space: nowrap;
+  }
+
+  nav.container-fluid {
+    align-items:center;
+    gap:40px;
+  }
+
+  nav form {
+    margin-bottom:0;
+  }
+
+  .grow {
+    flex-grow:1;
+  }
+
+  .grow input {
+    width:100%;
+  }
+
   .light-text {
     font-weight: 100;
     font-size: 1.8rem;
@@ -62,6 +83,10 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
 
   }
   @media (max-width:730px){
+
+    .flow {
+      display:none
+    }
   
     h1 {
       font-size: 1.5rem;

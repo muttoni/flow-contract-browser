@@ -8,8 +8,9 @@ export async function search(term) {
   }
 
   if(term) {
-    const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/search/${term}`)
+    const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/search/contract?query=${term}`)
     const json = await raw.json()
+    console.log(json)
     const results = json.success && json.data.length > 0 ? json.data.sort((a,b) => b.dependants_count - a.dependants_count) : [];
     return results
   } else {

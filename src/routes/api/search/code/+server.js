@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 
 /** @type {import('./$types').RequestHandler} */
-export async function GET({params, url}) {
+export async function GET({ url }) {
 
   const options = {
     method: 'GET',
