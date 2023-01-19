@@ -13,7 +13,7 @@ export async function GET({fetch}) {
   let res = {};
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/status`, options)
+    const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/status?network=${import.meta.env.VITE_NETWORK}`, options)
     res = await response.json()
     res.success = true;
   } catch(e) {

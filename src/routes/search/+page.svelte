@@ -22,8 +22,10 @@
 <ul>
   {#each code.slice(0,20) as snippet}
   <li>
-    <kbd>{snippet.type}</kbd>
-    <span>Used by {snippet.contracts_count} contracts</span>
+    <div>
+      <kbd>{snippet.type}</kbd>
+      <a href="/code/{snippet.code_hash}">Used by {snippet.contracts_count} contracts &rarr;</a>
+    </div>
     <CadenceCode code={snippet.code}></CadenceCode>
   </li>
   {/each}
@@ -37,7 +39,11 @@
     margin:0;
   }
 
-  span {
-    margin-left: 20px;
+  kbd {
+    margin-right: 20px;
+  }
+
+  div {
+    margin-bottom: 10px;
   }
 </style>
