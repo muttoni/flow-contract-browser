@@ -11,8 +11,10 @@
 </svelte:head>
 
 {#if data && data.hash}
-<h1>Contracts that use...</h1>
+<h1><kbd>{data.type}</kbd></h1>
 <CadenceCode code={data.code} />
+
+<h2>Contracts that use this code</h2>
 <ContractTable contracts={data.contracts} />
 {:else}
 <article>
