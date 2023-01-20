@@ -35,7 +35,7 @@
       <th>Contract Name</th>
       <th>Address</th>
       {#if showDependencies}
-      <th>Dependants</th>
+      <th class="text-end">Dependants</th>
       {/if}
     </tr>
   </thead>

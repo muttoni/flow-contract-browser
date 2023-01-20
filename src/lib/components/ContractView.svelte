@@ -50,20 +50,20 @@
     </div>
 
     <div class="">
-      <h3>Dependency Information</h3>
-
-      <p class="badge-caption">Depends on <span class="figure">{dependencies_count}</span> contracts </p>
+      <h3>Depends on <span class="figure">{dependencies_count}</span> contracts </h3>
       {#await getDependencies(uuid)}
       <p class="badge-caption">Loading dependencies...</p>
       {:then dependencyObject}
       {#if dependencyObject?.data.dependencies?.length > 0}
       <ContractTable contracts={makeContractObjectFromUuid([...dependencyObject?.data.dependencies])} showDependencies={false}></ContractTable>
+      {:else}
+      <p class="badge-caption">This contract has no dependencies.</p>
       {/if}
       {:catch error}
       <p class="badge-caption">Could not load dependencies.</p>
       {/await}
 
-      <p class="badge-caption">{name} is used by <span class="figure">{dependants_count}</span> contracts </p>
+      <h3><span class="figure">Imported by {dependants_count}</span> contracts</h3>
       {#await getDependants(uuid)}
       <p class="badge-caption">Loading dependants...</p>
       {:then dependantsObject}
