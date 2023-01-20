@@ -10,7 +10,8 @@
   export let search = contracts?.length > 10;
   export let showDependencies = true;
 
-  const searchLabel = `Filter ${contracts ? contracts?.length : ''} contracts...` 
+  // const searchLabel = `Filter ${contracts ? contracts?.length : ''} contracts...` 
+  const searchLabel = `Filter contracts...` 
 
   let pageCount = 0; //first page
   let pageSize = 10;
