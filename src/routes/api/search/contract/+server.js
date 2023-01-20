@@ -13,7 +13,7 @@ export async function GET({ url }) {
   let res = {};
 
   try {
-    const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/contracts/search?network=${import.meta.env.VITE_NETWORK}&keyword=${url.searchParams.get('query')}`, options)
+    const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/contracts/search?network=${import.meta.env.VITE_NETWORK}&keyword=${url.searchParams.get('query')}&offset=${url.searchParams.get('offset') || 0}&limit=${url.searchParams.get('limit') || 200}`, options)
     res = await response.json()
     res.success = true;
   } catch(e) {

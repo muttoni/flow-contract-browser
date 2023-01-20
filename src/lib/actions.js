@@ -1,4 +1,4 @@
-export async function search(term) {
+export async function search(term, sortByDependants, offset, limit) {
   if(term.length < 3) {
     return []
   }
@@ -11,7 +11,12 @@ export async function search(term) {
     const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/search/contract?query=${term}`)
     const json = await raw.json()
     console.log(json)
-    const results = json.success && json.data.length > 0 ? json.data.sort((a,b) => b.dependants_count - a.dependants_count) : [];
+
+    let results = json.success && json.data.length > 0 ? json.data : [];
+    
+    if(sortByDependants) {
+      results = results.sort((a,b) => b?.dependants_count - a?.dependants_count);
+    }
     return results
   } else {
     return []
