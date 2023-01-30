@@ -33,8 +33,8 @@
   }}>
   <thead slot="head">
     <tr>
-      <th>Contract Name</th>
-      <th>Address</th>
+      <th>Contract</th>
+      <th class="hideable">Address</th>
       {#if showDependencies}
       <th class="text-end">Dependants</th>
       {/if}
@@ -43,8 +43,8 @@
   <tbody>
     {#each contracts as row, index (row)}
       <Row {index}>
-        <td data-label="Contract name"><a data-sveltekit-reload href="/{row.uuid}">{getContractName(row.uuid)}</a></td>
-        <td data-label="Address"><span class="mono"><a data-sveltekit-reload href="/account/{getContractAddress(row.uuid)}">{getContractAddress(row.uuid)}</a></span></td>
+        <td data-label="Contract name"><a data-sveltekit-reload href="/{row.uuid}">{getContractName(row.uuid)}</a><small class="muted">{getContractAddress(row.uuid)}</small></td>
+        <td class="hideable" data-label="Address"><span class="mono"><a data-sveltekit-reload href="/account/{getContractAddress(row.uuid)}">{getContractAddress(row.uuid)}</a></span></td>
         {#if showDependencies}
         <td data-label="Used by" class="text-end"><span class="mono">{row.dependants_count}</span></td>
         {/if}
@@ -66,6 +66,20 @@
 
   td::-webkit-scrollbar {
     display: none;
+  }
+
+  .muted {
+    color:var(--muted-color);
+    display:none;
+  }
+
+  @media screen and (max-width: 520px) {
+    .hideable {
+      display:none;
+    }
+    .muted {
+      display:block;
+    }
   }
 
 </style>
