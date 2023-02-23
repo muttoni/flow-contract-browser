@@ -18,4 +18,4 @@ export async function load({ fetch, params }) {
   }
 }
 
-export const ssr = false;
+//export const ssr = true;
