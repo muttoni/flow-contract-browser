@@ -14,7 +14,7 @@ export async function GET({params}) {
 
   try {
     const response = await fetch(`${import.meta.env.VITE_API_DOMAIN}/api/v1/contracts?network=${import.meta.env.VITE_NETWORK}&order_by=dependants_count&order_by_direction=desc&limit=10`, options)
-    res = await response.json()
+    res = await response.json() 
     res.success = true;
   } catch(e) {
     console.log(e)
