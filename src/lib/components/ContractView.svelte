@@ -2,8 +2,10 @@
   import CadenceCode from '$lib/components/CadenceCode.svelte';
   import CopyBadge from '$lib/components/CopyBadge.svelte';
   import ContractTable from './ContractTable.svelte';
+  import { network } from '$lib/stores';
   import { makeContractObjectFromUuid } from '$lib/utils';
-  import { getDependants, getDependencies} from '$lib/actions';
+  import { getDependants, getDependencies, getDeployments} from '$lib/actions';
+    import DeploymentTable from './DeploymentTable.svelte';
   
   export let name = '';
   export let address = '0x';
@@ -35,12 +37,12 @@
         <h3>Basic Information</h3>
         <p class="badge-caption">Location <CopyBadge text={uuid} /></p>
         <kbd>{uuid}</kbd>
-        <a role="button" class="mt-05 block" target="_blank" rel="noreferrer" href="https://flow-view-source.com/mainnet/account/{address}/contract/{name}">View on FlowViewSource</a>
+        <a role="button" class="mt-05 block" target="_blank" rel="noreferrer" href="https://f.dnz.dev/{address}/{name}">View on f.dnz.dev</a>
       </div>
       <div class="mb-1">
         <p class="badge-caption">Address <CopyBadge text={address} /></p>
         <kbd>{address}</kbd>
-        <a role="button" class="mt-05 block" target="_blank" rel="noreferrer" href="https://flowview.app/account/{address}">Inspect account on FlowView.app</a>
+        <a role="button" class="mt-05 block" target="_blank" rel="noreferrer" href="https://{ $network === 'testnet' ? 'testnet.' : ''}flowview.app/account/{address}">Inspect account on FlowView.app</a>
         <a role="button" class="mt-05 mb-1 outline block" target="_blank" rel="noreferrer" data-sveltekit-reload href="/account/{address}">All contracts involving {address} &rarr;</a>
       </div>
       <div class="mb-1">
@@ -72,6 +74,17 @@
       {/if}
       {:catch error}
       <p class="badge-caption">Could not load dependants.</p>
+      {/await}
+
+      <h3><span class="figure">Deployment history</h3>
+      {#await getDeployments(uuid)}
+      <p class="badge-caption">Loading deployment history...</p>
+      {:then deploymentsObject}
+      {#if deploymentsObject?.data?.deployments?.length > 0}
+      <DeploymentTable deployments={deploymentsObject.data.deployments} ></DeploymentTable>
+      {/if}
+      {:catch error}
+      <p class="badge-caption">Could not load deployment history.</p>
       {/await}
 
       </div>

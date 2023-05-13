@@ -126,3 +126,8 @@ code, pre {
 code a {
   border-bottom: 1px dotted;
 }
+
+.d-flex {
+  display:flex;
+  
+}
