@@ -36,3 +36,10 @@ export async function getDependencies(uuid) {
 
   return json
 }
+
+export async function getDeployments(uuid) {
+  const raw = await fetch(`${import.meta.env.VITE_DOMAIN}/api/contract/${uuid}/deployments`)
+  const json = await raw.json()
+
+  return json
+}

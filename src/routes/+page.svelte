@@ -27,7 +27,7 @@
       </div>
       <StatCard 
         number={data?.status?.contract_amount?.toLocaleString("en-US") || "Offline"}
-        label="Contracts on {import.meta.env.VITE_NETWORK}"
+        label="Contracts on {import.meta.env.VITE_NETWORK}" 
       />
   </div>
 </article>

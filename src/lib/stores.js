@@ -1,6 +1,7 @@
 import { readable, writable, derived } from 'svelte/store';
 import { browser } from '$app/environment';
 
+export const network = readable(import.meta.env.VITE_NETWORK);
 export const activeContract = writable(null);
 export const fullTextSearch = writable(false);
 export const isLoadingDB = writable(false);

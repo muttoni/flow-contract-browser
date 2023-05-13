@@ -2,6 +2,7 @@
   export let account = '';
   export let contracts = [];
   import ContractTable from './ContractTable.svelte';
+  import { network } from '$lib/stores';
 </script>
 
 <article>
@@ -17,7 +18,7 @@
       </h2>
     </hgroup>
   </header>
-  <a role="button" class="mb-1" target="_blank" rel="noreferrer" href="https://flowview.app/account/{account}">Inspect account on FlowView.app</a>
+  <a role="button" class="mb-1" target="_blank" rel="noreferrer" href="https://{ $network === 'testnet' ? 'testnet.' : ''}flowview.app/{account}">Inspect account on FlowView.app</a>
   <div class="mb-1"> 
     <h4>Contracts deployed by <span class="mono">{account}</span></h4>
     {#if contracts?.filter((s) => s.uuid.includes(account.substring(2)))?.length > 0}
