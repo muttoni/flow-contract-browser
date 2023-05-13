@@ -31,6 +31,7 @@
     </hgroup>
   </header>
 
+  
   <div class="grid">
     <div>
       <div class="mb-1">
@@ -46,9 +47,20 @@
         <a role="button" class="mt-05 mb-1 outline block" target="_blank" rel="noreferrer" data-sveltekit-reload href="/account/{address}">All contracts involving {address} &rarr;</a>
       </div>
       <div class="mb-1">
-        <p class="badge-caption">Import <CopyBadge text="import {name} from {address}" /></p>
+        <p class="badge-caption">Add to your contract <CopyBadge text="import {name} from {address}" /></p>
         <CadenceCode code="import {name} from {address}" link={false} lineNumbers={false} />
       </div>
+
+      <h3><span class="figure">Deployment history</h3>
+        {#await getDeployments(uuid)}
+        <p class="badge-caption">Loading deployment history...</p>
+        {:then deploymentsObject}
+        {#if deploymentsObject?.data?.deployments?.length > 0}
+        <DeploymentTable deployments={deploymentsObject.data.deployments} ></DeploymentTable>
+        {/if}
+        {:catch error}
+        <p class="badge-caption">Could not load deployment history.</p>
+        {/await}
     </div>
 
     <div class="">
@@ -74,17 +86,6 @@
       {/if}
       {:catch error}
       <p class="badge-caption">Could not load dependants.</p>
-      {/await}
-
-      <h3><span class="figure">Deployment history</h3>
-      {#await getDeployments(uuid)}
-      <p class="badge-caption">Loading deployment history...</p>
-      {:then deploymentsObject}
-      {#if deploymentsObject?.data?.deployments?.length > 0}
-      <DeploymentTable deployments={deploymentsObject.data.deployments} ></DeploymentTable>
-      {/if}
-      {:catch error}
-      <p class="badge-caption">Could not load deployment history.</p>
       {/await}
 
       </div>
