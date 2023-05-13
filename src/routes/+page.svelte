@@ -2,6 +2,7 @@
   import StatCard from '$lib/components/StatCard.svelte';
   import ContractTable from '$lib/components/ContractTable.svelte'
   import { timeSince } from '$lib/utils'
+  import { network } from '$lib/stores'
   export let data;
 </script>
 
@@ -12,7 +13,7 @@
 
 <article>
   <header>
-    <h2>👀 Overview</h2>
+    <h2>👀 Overview of Flow Contracts on {$network}</h2>
   </header>
   <div class="grid">
     <!-- <StatCard 
@@ -30,6 +31,11 @@
         label="Contracts on {import.meta.env.VITE_NETWORK}" 
       />
   </div>
+  {#if $network === 'mainnet'}
+  <a class="warning" href="https://testnet.contractbrowser.com/">Switch to testnet &rarr;</a>
+  {:else}
+  <a class="success" href="https://contractbrowser.com/">Switch to mainnet &rarr;</a>
+  {/if}
 </article>
 
 <article>
