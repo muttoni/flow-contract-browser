@@ -2,11 +2,21 @@
   import "../app.css";
   import ContractSearcher from '$lib/components/ContractSearcher.svelte';
   import ThemePicker from '$lib/components/ThemePicker.svelte';
+  import { network } from '$lib/stores';
 </script>
 
 <nav class="container-fluid">
   <ul>
-    <li><h1 class="logo"><a href="/"><img style="height:45px; width:auto;" src="/logo.png" alt="logo"/><span class="light-text">Contract Browser</span></a></h1></li>
+    <li>
+      <h1 class="logo">
+        <a href="/"><img style="height:45px; width:auto;" src="/logo.png" alt="logo"/>
+          <span class="light-text">Contract Browser</span>
+          <div class="network-badge {$network === 'mainnet' ? 'success' : 'warning'}">
+            {$network}
+          </div>
+        </a>
+      </h1>
+    </li>
   </ul>
   <ul class="grow">
     <li>
@@ -104,7 +114,8 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
 
   footer {
     text-align:center;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
+    margin-top:50px;
     padding-bottom: 30px;
   }
 

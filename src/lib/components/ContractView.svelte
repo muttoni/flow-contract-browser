@@ -114,23 +114,6 @@
     hgroup {
       margin-bottom:0;
     }
-    .badge-caption {
-      font-size: 0.7rem;
-      margin-top:1.5rem;
-      text-transform: uppercase;
-    }
-    .claimed-badge {
-      padding: 0.15rem 0.5rem;
-      border: 1px solid var(--green);
-      border-radius: 100px;
-      color: var(--green);
-      font-size: 0.7rem;
-      display:inline-block;
-    }
-
-    .success {
-      color: var(--green);
-    }
 
     .figure {
       font-weight:bold;
