@@ -51,15 +51,22 @@
         <CadenceCode code="import {name} from {address}" link={false} lineNumbers={false} />
       </div>
 
-      <h3><span class="figure">Deployment history</h3>
+      <h3><span class="figure">Contract History</h3>
         {#await getDeployments(uuid)}
         <p class="badge-caption">Loading deployment history...</p>
         {:then deploymentsObject}
         {#if deploymentsObject?.data?.deployments?.length > 0}
         <DeploymentTable deployments={deploymentsObject.data.deployments} ></DeploymentTable>
+        {:else}
+        <p class="mt-1">
+          Could not find any deployment history for this contract. <br/><br/>
+        </p>     
+        {/if}
+        {#if $network === 'testnet'}
+        <p class="badge-caption"><strong>Note</strong>: Testnet events are only synced from Jan 1, 2023</p>
         {/if}
         {:catch error}
-        <p class="badge-caption">Could not load deployment history.</p>
+        <p class="badge-caption">Could not get deployment history.</p>
         {/await}
     </div>
 

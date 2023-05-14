@@ -17,6 +17,6 @@
 <ContractView {...data} />
 {:else}
 <article>
-  <p>Could not connect to the database</p>
+  <p>Contract not found.</p>
 </article>
 {/if}

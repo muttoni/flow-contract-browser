@@ -42,7 +42,7 @@
     {#each deployments as row, index (row)}
       <Row {index}>
         <td data-label="Event">{row.type}</td>
-        <td data-label="Block"><span class="mono"><a data-sveltekit-reload href="https://f.dnz.dev/{row.tx_id}">{row.block_height}</a></span></td>
+        <td data-label="Block"><span class="mono"><a data-sveltekit-reload href="https://f.dnz.dev/{row.tx_id}">{row.block_height} 🔗</a></span></td>
         <td data-label="Date">{new Date(row.block_timestamp).toLocaleDateString()}</td>
       </Row>
     {/each}
