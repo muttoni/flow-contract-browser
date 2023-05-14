@@ -1,17 +1,43 @@
 <script>
-import { toHtml } from 'hast-util-to-html'
-import { createStarryNight } from '@wooorm/starry-night'
-import sourceCadence from '@wooorm/starry-night/lang/source.cadence'
-import { detectAndAddAnchorLinksToAccounts } from '$lib/utils'
-import CodeBlock from './CodeBlock.svelte';
+  import cadenceHighlighter from '$lib/cadencehighlighter'
+  import { afterUpdate, onMount } from 'svelte';
+  import CodeBlock from './CodeBlock.svelte';
+  
+  export let code = '';
+  export let link = true;
+  export let lineNumbers = true;
+  
+  $: htmlx = '';
+  
+  onMount(async () => {
+    htmlx = await cadenceHighlighter.processCode(code, link);
+  })
 
-export let code = '';
-export let link = true;
-export let lineNumbers = true;
+  afterUpdate(async () => {
+    htmlx = await cadenceHighlighter.processCode(code, link);
+  })
+</script>
 
-$: htmlx = '';
 
-$: createStarryNight([sourceCadence], { getOnigurumaUrlFetch() {
+<CodeBlock {lineNumbers} {code}>
+  {@html htmlx}
+</CodeBlock>
+
+
+<!-- <script>
+  import { toHtml } from 'hast-util-to-html'
+  import { createStarryNight } from '@wooorm/starry-night'
+  import sourceCadence from '@wooorm/starry-night/lang/source.cadence'
+  import { detectAndAddAnchorLinksToAccounts } from '$lib/utils'
+  import CodeBlock from './CodeBlock.svelte';
+  
+  export let code = '';
+  export let link = true;
+  export let lineNumbers = true;
+  
+  $: htmlx = '';
+  
+  $: createStarryNight([sourceCadence], { getOnigurumaUrlFetch() {
     return new URL('/onig.wasm', window.location.href);
   }})
     .then((starryNight) => {
@@ -29,10 +55,11 @@ $: createStarryNight([sourceCadence], { getOnigurumaUrlFetch() {
 
 
 
+  
+  
 </script>
 
 
 <CodeBlock {lineNumbers} {code}>
-<!-- {@html htmlx} -->
-{code}
-</CodeBlock>
+  {@html htmlx}
+</CodeBlock> -->
