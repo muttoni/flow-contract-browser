@@ -1,6 +1,6 @@
 <script>
   import cadenceHighlighter from '$lib/cadencehighlighter'
-  import { onMount } from 'svelte';
+  import { afterUpdate, onMount } from 'svelte';
   import CodeBlock from './CodeBlock.svelte';
   
   export let code = '';
@@ -10,6 +10,10 @@
   $: htmlx = '';
   
   onMount(async () => {
+    htmlx = await cadenceHighlighter.processCode(code, link);
+  })
+
+  afterUpdate(async () => {
     htmlx = await cadenceHighlighter.processCode(code, link);
   })
 </script>
