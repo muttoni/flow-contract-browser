@@ -4,10 +4,7 @@
 
   import Table, { Row } from "$lib/components/table/Table.svelte";
 
-  export let deployments = [];
-
-  console.log(deployments)
-  
+  export let deployments = [];  
   export let search = deployments?.length > 10;
 
   // const searchLabel = `Filter ${contracts ? contracts?.length : ''} contracts...` 

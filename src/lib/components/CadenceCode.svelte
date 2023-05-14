@@ -1,8 +1,6 @@
 <script>
-import { toHtml } from 'hast-util-to-html'
-import { createStarryNight } from '@wooorm/starry-night'
-import sourceCadence from '@wooorm/starry-night/lang/source.cadence'
-import { detectAndAddAnchorLinksToAccounts } from '$lib/utils'
+import starry from '$lib/starrynight'
+import { onMount } from 'svelte';
 import CodeBlock from './CodeBlock.svelte';
 
 export let code = '';
@@ -11,28 +9,14 @@ export let lineNumbers = true;
 
 $: htmlx = '';
 
-$: createStarryNight([sourceCadence], { getOnigurumaUrlFetch() {
-    return new URL('/onig.wasm', window.location.href);
-  }})
-    .then((starryNight) => {
-      let tree = starryNight.highlight(code, 'source.cadence');
-
-      let html = toHtml(tree)
-      
-      if(link) {
-        html = detectAndAddAnchorLinksToAccounts(html)
-      }
-
-      htmlx = html;
-
-    })
-
-
+onMount(async () => {
+  htmlx = await starry.processCode(code, link);
+  // Use the processed HTML
+})
 
 </script>
 
 
 <CodeBlock {lineNumbers} {code}>
-<!-- {@html htmlx} -->
-{code}
+  {@html htmlx}
 </CodeBlock>
