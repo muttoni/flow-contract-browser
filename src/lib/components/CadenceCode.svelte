@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
   import cadenceHighlighter from '$lib/cadencehighlighter'
   import { onMount } from 'svelte';
   import CodeBlock from './CodeBlock.svelte';
@@ -17,10 +17,10 @@
 
 <CodeBlock {lineNumbers} {code}>
   {@html htmlx}
-</CodeBlock> -->
+</CodeBlock>
 
 
-<script>
+<!-- <script>
   import { toHtml } from 'hast-util-to-html'
   import { createStarryNight } from '@wooorm/starry-night'
   import sourceCadence from '@wooorm/starry-night/lang/source.cadence'
@@ -33,23 +33,24 @@
   
   $: htmlx = '';
   
-  function myWasm(){
+  $: createStarryNight([sourceCadence], { getOnigurumaUrlFetch() {
     return new URL('/onig.wasm', window.location.href);
-  }
-  $: createStarryNight([sourceCadence], {getOnigurumaUrlFetch: myWasm})
-  .then((starryNight) => {
-    let tree = starryNight.highlight(code, 'source.cadence');
-    
-    let html = toHtml(tree)
-    
-    if(link) {
-      html = detectAndAddAnchorLinksToAccounts(html)
-    }
-    
-    htmlx = html;
-    
-  })
-  
+  }})
+    .then((starryNight) => {
+      let tree = starryNight.highlight(code, 'source.cadence');
+
+      let html = toHtml(tree)
+      
+      if(link) {
+        html = detectAndAddAnchorLinksToAccounts(html)
+      }
+
+      htmlx = html;
+
+    })
+
+
+
   
   
 </script>
@@ -57,5 +58,4 @@
 
 <CodeBlock {lineNumbers} {code}>
   {@html htmlx}
-  <!-- {code} -->
-</CodeBlock>
+</CodeBlock> -->
