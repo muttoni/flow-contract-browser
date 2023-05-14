@@ -11,7 +11,9 @@ export let lineNumbers = true;
 
 $: htmlx = '';
 
-$: createStarryNight([sourceCadence])
+$: createStarryNight([sourceCadence], { getOnigurumaUrlFetch() {
+    return new URL('/onig.wasm', window.location.href);
+  }})
     .then((starryNight) => {
       let tree = starryNight.highlight(code, 'source.cadence');
 
@@ -31,5 +33,6 @@ $: createStarryNight([sourceCadence])
 
 
 <CodeBlock {lineNumbers} {code}>
-{@html htmlx}
+<!-- {@html htmlx} -->
+{code}
 </CodeBlock>
