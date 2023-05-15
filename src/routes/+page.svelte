@@ -13,7 +13,7 @@
 
 <article>
   <header>
-    <h2>👀 Overview of Flow Contracts on {$network}</h2>
+    <h2>👀 Overview on {$network}</h2>
   </header>
   <div class="grid">
     <!-- <StatCard 
@@ -38,21 +38,23 @@
   {/if}
 </article>
 
-<article>
-  <header><h2>🔥 Top contracts</h2></header>
-  <div class="table">
-    <ContractTable contracts={data.top} />
-  </div>
-</article>
-
-{#if data.latest?.length > 0}
-<article>
-  <header><h2>🆕 Recently deployed contracts</h2></header>
-  <div class="table">
-    <ContractTable contracts={data.latest} showDependencies={false} />
-  </div>
-</article>
-{/if}
+<div class="grid">
+  <article>
+    <header><h2>🔥 Top contracts</h2></header>
+    <div class="table">
+      <ContractTable contracts={data.top} />
+    </div>
+  </article>
+  
+  {#if data.latest?.length > 0}
+  <article>
+    <header><h2>🆕 Recently deployed contracts</h2></header>
+    <div class="table">
+      <ContractTable contracts={data.latest} showDependencies={false} />
+    </div>
+  </article>
+  {/if}
+</div>
 
 <style>
   .status {
@@ -65,6 +67,10 @@
   
   .grid {
     justify-content: center;
-    
+  }
+
+  article {
+    margin-bottom:0px;
+    margin-top:var(--grid-spacing-horizontal);
   }
 </style>
