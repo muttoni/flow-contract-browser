@@ -3,29 +3,36 @@
   import ContractSearcher from '$lib/components/ContractSearcher.svelte';
   import ThemePicker from '$lib/components/ThemePicker.svelte';
   import { network } from '$lib/stores';
+
+let isSearchOpen = false;
+
+function toggleSearch() {
+  isSearchOpen = !isSearchOpen;
+}
 </script>
 
-<nav class="container-fluid">
-  <ul>
-    <li>
-      <h1 class="logo">
-        <a href="/"><img style="height:45px; width:auto;" src="/logo.png" alt="logo"/>
-          <span class="light-text">Contract Browser</span>
-          <div class="network-badge {$network === 'mainnet' ? 'success' : 'warning'}">
-            {$network}
-          </div>
-        </a>
-      </h1>
-    </li>
-  </ul>
-  <ul class="grow">
-    <li>
-      <form action="/search" method="GET" data-sveltekit-reload><input type="search" name="query" placeholder="Search code & contracts"/></form>
-    </li>
-  </ul>
-</nav>
-
 <main class="container">
+  <div class="flex-center nav">
+    <div class="flex-center logo-container">
+      <a class="logo" href="/"><img style="height:45px; width:auto; min-width:134px;" src="/logo.png" alt="logo"/></a>
+      <div class="network-badge {$network === 'mainnet' ? 'success' : 'warning'}">
+        {$network}
+      </div>
+      <div class="search-button-container" on:click={toggleSearch}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(162, 175, 185)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>      
+      </div>
+    </div>
+    <div class="search-bar-container {isSearchOpen ? 'mobile' : 'desktop'}">
+      <form action="/search" method="GET" data-sveltekit-reload>
+        <input class="search-bar {isSearchOpen ? 'mobile' : 'desktop'}" type="search" name="query" placeholder="Search code & contracts"/>
+      </form>
+    </div>
+  </div>
+
+
   <ContractSearcher />
   <slot></slot>
 </main>
@@ -39,84 +46,96 @@ ContractBrowser.com | Have feedback or ideas? <a href="https://github.com/mutton
 
 <style>
 
+a:focus {
+  outline: none;
+  background: transparent;
+  user-select: none;
+}
 
-  img {
-    margin-right: 1rem;
-    height:60px;
-    width: 60px;
+a {
+  color: inherit;
+}
+
+.nav {
+  gap: 1rem;
+  padding: 10px 0px;
+  align-items: center;
+  margin-bottom:20px;
+  margin-top:10px;
+}
+
+.logo-container {
+  gap: 0.5rem;
+}
+
+form {
+  margin-bottom: 0;
+  flex-grow:1;
+}
+
+.search-bar {
+  border: none;
+  border-radius: 4px !important;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.7rem;
+  margin-top: 50px;
+  padding-bottom: 30px;
+}
+
+.search-button-container {
+  cursor: pointer;
+  align-items: center;
+  display: none;
+}
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-grow:1;
+}
+
+.search-bar-container.mobile {
+  display: none;
+}
+
+.search-bar.mobile {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: start;
   }
 
-  a:focus{
-    outline:none;
-    background:transparent;
-    user-select: none;
-  }
-  
-  a {
-    color: inherit;
-  }
-
-  .logo {
-    white-space: nowrap;
-  }
-
-  nav.container-fluid {
-    align-items:center;
-    gap:40px;
-  }
-
-  nav form {
-    margin-bottom:0;
-  }
-
-  .grow {
-    flex-grow:1;
-  }
-
-  .grow input {
+  .logo-container {
     width:100%;
   }
 
-  nav ul.grow {
-    justify-content: end;
+  .search-button-container {
+    display:block;
+    margin-left: auto;
+    padding:10px;
   }
 
-  .light-text {
-    font-weight: 100;
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: normal;
+  .search-bar-container {
+    margin-top: 0;
+    justify-content: space-between;
   }
 
-  nav {
-    margin-bottom:20px;
+  .search-bar-container.mobile {
+    display: flex;
   }
 
-  h1 {
-    margin:0;
-
+  .search-bar-container.desktop {
+    display: none;
   }
-  @media (max-width:730px){
-
-    h1 {
-      font-size: 1.5rem;
-    }
-
-    .light-text {
-      font-size: 1.2rem;
-    }
-
-    img {
-      height: 40px;
-      width: 40px;
-    }
-  }
-
-  footer {
-    text-align:center;
-    font-size: 0.7rem;
-    margin-top:50px;
-    padding-bottom: 30px;
-  }
+}
 
 </style>

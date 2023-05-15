@@ -5,7 +5,7 @@
   import { network } from '$lib/stores';
   import { makeContractObjectFromUuid } from '$lib/utils';
   import { getDependants, getDependencies, getDeployments} from '$lib/actions';
-    import DeploymentTable from './DeploymentTable.svelte';
+  import DeploymentTable from './DeploymentTable.svelte';
   
   export let name = '';
   export let address = '0x';
