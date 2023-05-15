@@ -2,7 +2,7 @@
   import "../app.css";
   import ContractSearcher from '$lib/components/ContractSearcher.svelte';
   import ThemePicker from '$lib/components/ThemePicker.svelte';
-  import { network } from '$lib/stores';
+  import { theme, network } from '$lib/stores';
 
 let isSearchOpen = false;
 
@@ -14,7 +14,7 @@ function toggleSearch() {
 <main class="container">
   <div class="flex-center nav">
     <div class="flex-center logo-container">
-      <a class="logo" href="/"><img style="height:45px; width:auto; min-width:134px;" src="/logo.png" alt="logo"/></a>
+      <a class="logo" href="/"><img style="height:45px; width:auto; min-width:134px;" src="/logo-{$theme}.png" alt="logo"/></a>
       <a href="https://{ $network === 'mainnet' ? 'testnet.' : ''}contractbrowser.com" title="Switch network">
         <div class="network-badge {$network === 'mainnet' ? 'success' : 'warning'}">
           {$network}
