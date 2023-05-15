@@ -43,6 +43,10 @@
     position:relative;
   }
 
+  pre {
+    margin:0;
+  }
+
   a.highlighted {
     color: var(--color) !important;
     font-weight:900;

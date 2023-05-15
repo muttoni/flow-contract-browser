@@ -14,6 +14,10 @@
   let filterBy = 'all';
   let snippetPaginationStart = 0;
   let snippetPaginationAmount = 20;
+
+  function resetSnippetPagination() {
+    snippetPaginationStart = 0;
+  }
 </script>
 
 {#if data?.results}
@@ -30,7 +34,7 @@
 <br/>
 
 <label for="filter">Filter by snippet type</label>
-<select id="filter" required bind:value={filterBy}>
+<select id="filter" on:change={resetSnippetPagination} required bind:value={filterBy}>
   <option value="all" selected>All types ({totalSnippets})</option>
   <option value="resource">Resources ({(snippets.filter(i => i.type.includes('resource'))).length})</option>
   <option value="struct">Structs ({(snippets.filter(i => i.type.includes('struct'))).length})</option>
@@ -43,11 +47,21 @@
 <ul>
   {#each snippets.filter(i => filterBy === 'all' ? i : i.type.includes(filterBy)).slice(snippetPaginationStart, snippetPaginationStart+snippetPaginationAmount) as snippet}
   <li>
-    <div>
-      <kbd>{snippet.type}</kbd>
-      <a href="/code/{snippet.code_hash}">Used by {snippet.contracts_count} contracts &rarr;</a>
-    </div>
-    <CadenceCode code={snippet.code} lineNumbers={false}></CadenceCode>
+    <a href="/code/{snippet.code_hash}" class="search-result-link">
+    <div class="search-result-container">
+      <div class="search-result-header">
+        <kbd>{snippet.type}</kbd>
+        <span>Used by {snippet.contracts_count} contracts &rarr;</span>
+        <a role="button" class="secondary" style="margin-left:auto;" href="/code/{snippet.code_hash}">View</a>
+      </div>
+      <div class="code-snippet-mask">
+        <CadenceCode code={snippet.code} lineNumbers={false}></CadenceCode>
+          {#if snippet.code.split("\n").length > 5}
+          <div class="code-snippet-mask-shadow"></div>
+          {/if}
+        </div>
+      </div>
+    </a>
   </li>
   {/each}
 </ul>
@@ -79,8 +93,38 @@ Showing {snippetPaginationStart} - {snippetPaginationStart + snippetPaginationAm
   kbd {
     margin-right: var(--spacing);
   }
+  .search-result-link {
+    all:unset;
+    cursor:pointer;
+  }
 
-  div {
-    margin-bottom: var(--spacing);
+  .search-result-container {
+    border: var(--border-width) solid var(--muted-border-color);
+    border-radius: 4px;
+  }
+
+  .search-result-container:hover {
+    border: var(--border-width) solid var(--primary);
+  }
+
+  .search-result-header {
+    padding: var(--spacing);
+    align-items: center;
+    display:flex;
+  }
+
+  .code-snippet-mask {
+    max-height: 200px;
+    overflow:hidden;
+    position:relative;
+  }
+
+  .code-snippet-mask-shadow {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height: 100px;
+    background-image: linear-gradient(to bottom, transparent, var(--code-background-color));
   }
 </style>
