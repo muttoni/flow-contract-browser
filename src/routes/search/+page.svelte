@@ -16,6 +16,7 @@
   let snippetPaginationAmount = 20;
 </script>
 
+{#if data?.results}
 <h1>Search Results for '{data?.results?.query}'</h1>
 
 <form method="/search" data-sveltekit-reload><input type="search" name="query" placeholder="Search again in contracts and code..."/></form>
@@ -58,7 +59,11 @@
 </div>
 Showing {snippetPaginationStart} - {snippetPaginationStart + snippetPaginationAmount} of {totalSnippets} 
 {/if}
+{:else}
+<h1>Search all contracts and code</h1>
+<form method="/search" data-sveltekit-reload><input type="search" name="query" placeholder="Search across all contracts and their code..."/></form>
 
+{/if}
 
 <style>
   ul, li {

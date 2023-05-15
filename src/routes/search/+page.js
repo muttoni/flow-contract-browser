@@ -8,6 +8,12 @@ export async function load({ fetch, url }) {
 
   const query = url.searchParams.get('query');
 
+  if(!query) {
+    return {
+      
+    }
+  }
+
   try {
     const rawContractSearch = await fetch(`/api/search/contract?query=${query}`)
     const jsonContractSearch = await rawContractSearch?.json()
