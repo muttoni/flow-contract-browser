@@ -15,9 +15,11 @@ function toggleSearch() {
   <div class="flex-center nav">
     <div class="flex-center logo-container">
       <a class="logo" href="/"><img style="height:45px; width:auto; min-width:134px;" src="/logo.png" alt="logo"/></a>
-      <div class="network-badge {$network === 'mainnet' ? 'success' : 'warning'}">
-        {$network}
-      </div>
+      <a href="https://{ $network === 'mainnet' ? 'testnet.' : ''}contractbrowser.com" title="Switch network">
+        <div class="network-badge {$network === 'mainnet' ? 'success' : 'warning'}">
+          {$network}
+        </div>
+      </a>
       <div class="search-button-container" on:click={toggleSearch}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(162, 175, 185)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
