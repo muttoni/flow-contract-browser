@@ -17,7 +17,7 @@ export const activeContractWithMetadata = derived(activeContract, $activeContrac
     return $activeContract
   }
 })
-export const theme = persistentWritable('dark');
+export const theme = persistentWritable('theme', 'dark');
 
 // Make any writable store persistent.
 export function persistentWritable(key, defaultValue) {
