@@ -45,23 +45,4 @@
     padding: 30px;
     text-align: center;
   }
-
-  .themed {
-  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); 
-  filter: brightness(120%);
-}
-
-.themed:before {
-  z-index:-1;
-  position: absolute;
-  content:"";
-  width:100%;
-  height:100%;
-  left:0px;
-  top:0;
-  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); 
-  filter: blur(3px);
-  
-}
-
 </style>
